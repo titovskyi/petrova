@@ -509,8 +509,18 @@ body {
 }
 
 .vacancies-card__title-link:hover {
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.app-title-link {
     color: #FFFFFF;
     cursor: pointer;
+    text-decoration: none !important;
+}
+
+.app-title-link:hover {
+    color: #FFFFFF;
 }
 
 .project-list {
@@ -526,6 +536,15 @@ body {
 }
 
 .project-item__link {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 11px;
+    height: 22px;
+    padding: 2px 8px;
+    width: 100%;
+    transition: background-color .2s;
+}
+
+.project-item__wrapper {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 11px;
     height: 22px;
