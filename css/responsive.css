@@ -53,6 +53,10 @@
         display: none;
     }
 
+    .mobile-contacts {
+        display: flex;
+    }
+
     .address-card {
         right: 65px;
         top: 120px;

@@ -1173,7 +1173,7 @@ body {
 /*CONTACTS*/
 
 .mobile-contacts {
-    display: flex;
+    display: none;
     justify-content: center;
     margin-top: 75px;
 }
@@ -1188,12 +1188,15 @@ body {
     font-size: 12px;
     line-height: 18px;
     color: #fde724;
-    margin-left: 6px;
 }
 
 .mobile-contact__text:hover {
     color: #fde724;
     text-decoration: none;
+}
+
+.mobile-contact__text span {
+    margin-left: 6px;
 }
 
 .contacts-banner {
