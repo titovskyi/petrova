@@ -1,0 +1,157 @@
+@media screen and (max-width: 1199px) {
+    .address-card {
+        top: 250px;
+        right: 115px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .contacts-chooser {
+        height: 335px;
+    }
+    .address-card {
+        right: 135px;
+        top: 180px;
+        width: 130px;
+        padding: 0;
+    }
+
+    .address-card-header__line {
+        box-shadow: 0 0 35px rgba(253, 231, 36, 0);
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 6px;
+        width: 100%;
+        transition: all 0.2s;
+    }
+
+    .address-card-header__title {
+        padding: 12px 12px 8px 12px;
+    }
+
+    .open-google-map {
+        display: block!important;
+    }
+
+    .address-card-header__text {
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0 0 0 6px;
+    }
+
+    .address-card-content__text {
+        color: #ffffff;
+        font-size: 11px;
+        line-height: 130%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .contacts-chooser {
+        display: none;
+    }
+
+    .address-card {
+        right: 65px;
+        top: 120px;
+    }
+
+    .desktop-contacts-slider {
+        display: none;
+    }
+
+    .mobile-slider-wrapper {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    .blog-card:first-child {
+        margin-top: 161px;
+    }
+
+    .filter {
+        display: none;
+    }
+
+    .filter-mobile {
+        display: block;
+    }
+
+    .blog-card-slider-controls {
+        display: none;
+    }
+
+    .blog-card {
+        width: auto;
+        padding: 0 13px 31px 13px;
+    }
+
+    .blog-card__header {
+        margin: 0 10px;
+    }
+
+    .blog-card__logo {
+        width: 50px;
+    }
+
+    .blog-card__date {
+        width: auto;
+    }
+
+    .blog-card__action_hashtag {
+        font-size: 16px;
+    }
+
+    .blog-card__info {
+        margin: 27px 10px 10px 10px;
+    }
+
+    .blog-card__info-wrapper {
+        padding: 0 3px;
+    }
+
+    .blog-card__info_header {
+        font-size: 20px;
+        padding: 0 3px;
+    }
+
+    .blog-card__info_text {
+        font-size: 18px;
+        line-height: 140%;
+    }
+
+    .more {
+        bottom: -3px;
+        width: 80%;
+    }
+
+    .blog-card__tags {
+        margin: 0 13px 0 13px;
+    }
+
+    .map {
+        display: none;
+    }
+
+    .mobile-map {
+        display: block;
+        margin: 57px auto 0 auto;
+    }
+
+    .address-card {
+        right: 20%;
+        top: 85px;
+    }
+
+
+}
+
+@media screen and (max-width: 341px) {
+    .mobile-contact {
+        margin: 0 5px;
+    }
+}
