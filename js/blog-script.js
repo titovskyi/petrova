@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    // ########################################
+
     $('.blog-card-slider').slick({
         dots: true,
         arrows: true,
@@ -9,11 +11,15 @@ $(document).ready(function () {
         centerPadding: '19px'
     });
 
+    // ########################################
+
     filterChange();
 
     addPlayStopActins();
 
     addCollapseEvent();
+
+    // ########################################
 
     function filterChange() {
         $('#filter-mobile').on('click', '.filter-mobile__item_show', function () {
@@ -28,6 +34,8 @@ $(document).ready(function () {
             allOptions.toggle();
         });
     }
+
+    // ########################################
 
     function addPlayStopActins() {
         const players = $('.blog-card-video');
@@ -62,15 +70,7 @@ $(document).ready(function () {
         });
     }
 
-    function addExpandEvent() {
-        const textBlocks = $('.blog-card__info-wrapper');
-
-        for (let i = 0; textBlocks.length > i; i++) {
-            const currentTextBlock = $(textBlocks[i]);
-
-            onExpand(currentTextBlock[0]);
-        }
-    }
+    // ########################################
 
     function addCollapseEvent () {
         const textBlocks = $('.blog-card__info-wrapper');
@@ -95,43 +95,5 @@ $(document).ready(function () {
         })
     }
 
-    function onExpand(textBlock) {
-
-        console.log($(textBlock));
-        textBlock.addEventListener('click', function () {
-            $(textBlock).css('height', 'auto');
-            $(textBlock).children()[1].hide();
-            console.log();
-
-            // onCollapse(textBlock);
-        });
-
-        // $(textBlock)
-        //     .children()[1]
-        //     .addEventListener('click', function () {
-        //         $(this).hide();
-        //         $(textBlock).css('height', 'auto');
-        //     });
-    }
-
-    // function onCollapse(textBlock) {
-    //     // const moreButton = $(textBlock.children()[1]);
-    //     textBlock.removeEventListener('click', function () {
-    //         // $(textBlock).children()[1].show();
-    //
-    //         $(textBlock).css('height', '70px');
-    //     });
-    //     textBlock.addEventListener('click', function () {
-    //         // $(textBlock).children()[1].show();
-    //
-    //         $(textBlock).css('height', '70px');
-    //     });
-    //
-    //     // $(textBlock)
-    //     //     .children()[2]
-    //     //     .addEventListener('click', function () {
-    //     //         moreButton.show();
-    //     //         textBlock.css('height', '70px');
-    //     //     });
-    // }
+    // ########################################
 });

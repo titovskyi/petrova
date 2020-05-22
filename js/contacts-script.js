@@ -1,10 +1,13 @@
 $(document).ready(function() {
+    // ########################################
+
     $('.lead-slider').slick({
         centerMode: true,
         centerPadding: '10%',
         slidesToShow: 3,
         infinite: true,
         arrows: false,
+        focusOnSelect:true,
         asNavFor: '.nav-slider'
     });
     $('.nav-slider').slick({
@@ -19,6 +22,8 @@ $(document).ready(function() {
         nextArrow: '.next-arrow'
     });
 
+    // ########################################
+
     $('.mobile-slider').slick({
         dots: true,
         arrows: false,
@@ -27,4 +32,5 @@ $(document).ready(function() {
         adaptiveHeight: true
     });
 
-})
+    // ########################################
+});
