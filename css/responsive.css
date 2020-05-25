@@ -9,6 +9,7 @@
     .contacts-chooser {
         height: 335px;
     }
+
     .address-card {
         right: 135px;
         top: 180px;
@@ -31,10 +32,6 @@
         padding: 12px 12px 8px 12px;
     }
 
-    .open-google-map {
-        display: block!important;
-    }
-
     .address-card-header__text {
         font-size: 14px;
         line-height: 17px;
@@ -49,8 +46,25 @@
 }
 
 @media screen and (max-width: 767px) {
+    .container_width-100 {
+        min-width: 100%;
+    }
+    
     .contacts-chooser {
         display: none;
+    }
+
+    .button-mobile_long {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .app-title {
+        font-family: 'Rubik', sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #FFFFFF;
     }
 
     .mobile-contacts {
@@ -73,8 +87,10 @@
 
 @media screen and (max-width: 576px) {
 
+
+
     .blog-card:first-child {
-        margin-top: 161px;
+        margin-top: 145px;
     }
 
     .filter {
@@ -151,6 +167,13 @@
         top: 85px;
     }
 
+    .it-start_desktop-vacancy {
+        display: none;
+    }
+
+    .it-start_mobile-vacancy {
+        display: block;
+    }
 
 }
 
