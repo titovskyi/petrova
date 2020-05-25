@@ -32,14 +32,20 @@ $(document).ready(function () {
     function highlightChild(rowChildren, columnIndex) {
         for (let i = 0; rowChildren.length > i; i++) {
             if (i === columnIndex) {
-                $(rowChildren[i]).addClass('active');
+                $(rowChildren[i]).toggleClass('active');
+
+                if($(rowChildren[i]).hasClass('active')) {
+                    $('.it-start__button').attr('disabled', false);
+                    $('.button__hint').hide();
+                } else {
+                    $('.it-start__button').attr('disabled', true);
+                    $('.button__hint').show();
+                }
             } else {
                 $(rowChildren[i]).removeClass('active');
             }
         }
 
-        $('.it-start__button').attr('disabled', false);
-        $('.button__hint').hide();
     }
 
     // ########################################
