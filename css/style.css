@@ -1,3 +1,65 @@
+
+/* You can add global styles to this file, and also import other style files */
+//font-family: 'Roboto', sans-serif;
+//font-family: 'Montserrat', sans-serif;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+//vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+html, body {
+    height: 100%;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
 body {
     background-color: #000;
     font-family: 'Rubik', sans-serif;
@@ -806,46 +868,347 @@ body {
     opacity: 0.75;
 }
 
-/*\\\\\\\\\\\\POP-UP//////////////*/
+/* VACANCIES */
 
-.pop-up {
-    background-image: url(../img/pop-up.jpg);
-    background-size: cover;
-    background-position: center center;
-    height: 3991px;
-}
-
-.pop-up_1 {
-    top: 366px;
-}
-
-.vacancies-block {
+.vacancies-top {
+    margin-top: 50px;
+    height: 400px;
+    display: block;
     position: relative;
 }
 
-.vac_pop {
+.vacancies-top::after {
+    content: '';
+    background: url(../img/vacancies-baner.jpg) center center no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
 
-.down_row {
-    border: 0;
-    background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, #0e0e0e 0.01%, #0e0e0e 100%);
+.vacancies-slider {
+    height: 250px;
+}
+
+.vacancies-slider__item {
+    outline: none !important;
+}
+
+.vacancies-slider .slick-dots {
+    bottom: -150px;
+}
+
+.vacancies-slider .slick-dots > li {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: background-color .2s;
+}
+
+.vacancies-slider .slick-dots > li:hover {
+    background: #FDE724;
+}
+
+.vacancies-slider .slick-dots > li.slick-active {
+    background: #FDE724;
+}
+
+.vacancies-filter {
+    margin-top: 50px;
+}
+
+
+
+
+.search__input {
+    width: 100%;
+    background: #1A1A1A;
     border-radius: 5px;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 30px;
-    text-align: justify;
-    letter-spacing: -1px;
-    color: rgba(255, 255, 255, 0.5);
+    border: none;
+    outline: none !important;
+    color: #FFFFFF;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 24px;
+    height: 52px;
+    padding-left: 16px;
 }
 
-.pop__select {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 125.1%;
-    text-align: justify;
-    letter-spacing: -1px;
+.search__input:focus {
+    background: #1A1A1A;
+    color: #FFFFFF;
+    box-shadow: none !important;
+    border: none !important;
 }
+
+.search__img-wrapper {
+    background: #1A1A1A;
+}
+
+.search__img {
+    border: none !important;
+    outline: none !important;
+    background: url("../img/search-img.png") no-repeat center center;
+    padding-right: 26px;
+}
+
+.search__img:hover, .search__img:active, .search__img:focus, .search__img:checked {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+
+
+
+
+/* Typed */
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+
+
+
+
+
+.string {
+    color: green;
+}
+
+.number {
+    color: #2979ff;
+}
+
+.boolean {
+    color: blue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.key:first-child {
+    color: #FDE724;
+}
+
+.code-wrapper {
+    /*width: 500px;*/
+    float: left;
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 28px;
+    overflow: hidden;
+    margin: 0;
+    width: min-content;
+    tab-size: 4;
+    tab-width: 4;
+}
+
+.code-wrapper pre {
+    color: #ffffff;
+}
+
+.code-wrapper span {
+    height: 15px;
+}
+
+.code-wrapper code {
+    line-height: 8px;
+}
+/*.vacancies-select {*/
+/*    background: #1A1A1A;*/
+/*    border-radius: 5px;*/
+/*    border: none;*/
+/*    outline: none !important;*/
+/*    color: rgba(255, 255, 255, 0.5);*/
+/*    font-family: Rubik;*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    font-size: 19px;*/
+/*    line-height: 24px;*/
+/*    height: 52px;*/
+/*    padding-left: 16px;*/
+
+
+/*    display: none;*/
+/*    position: relative;*/
+/*}*/
+
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    padding: 0;
+    border: none;
+
+    background: #1A1A1A;
+    border-radius: 5px;
+    border: none;
+    outline: none !important;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 24px;
+    /*height: 52px;*/
+}
+
+.custom-select select {
+    display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+    background: #1A1A1A;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    right: 10px;
+    background: url("../img/dropdown-arrow.png") no-repeat center center;
+    width: 14px;
+    height: 7px;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    transform: rotate(180deg);
+}
+/*color: #FDE724;*/
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+    color: rgba(255, 255, 255, 0.5);
+    padding: 13px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background: #1A1A1A;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    color: #FDE724;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.select-items div {
+    color: #ffffff;
+}
+
+.select-items div.same-as-selected {
+    color: #FDE724;
+}
+
+/*.vacancies-select:focus {*/
+/*    border: none !important;*/
+/*    box-shadow: none !important;*/
+/*}*/
+
+/*.vacancies-select:focus {*/
+/*    border: none;*/
+/*    background: #1A1A1A;*/
+/*    color: rgba(255, 255, 255, 0.5);*/
+/*}*/
+
+/*select.vacancies-select {*/
+/*    -moz-appearance:none; !* Firefox *!*/
+/*    -webkit-appearance:none; !* Safari and Chrome *!*/
+/*    appearance:none;*/
+/*}*/
+
+/*.vacancies-select__item {*/
+/*    height: 52px;*/
+/*}*/
+
+/* #################################### */
+
+
+/*\\\\\\\\\\\\POP-UP/////////////!*/
+
+/*.pop-up {*/
+/*    background-image: url(../img/pop-up.jpg);*/
+/*    background-size: cover;*/
+/*    background-position: center center;*/
+/*    height: 3991px;*/
+/*}*/
+
+/*.pop-up_1 {*/
+/*    top: 366px;*/
+/*}*/
+
+/*.vacancies-block {*/
+/*    position: relative;*/
+/*}*/
+
+/*.vac_pop {*/
+/*    position: absolute;*/
+/*}*/
+
+/*.down_row {*/
+/*    border: 0;*/
+/*    background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, #0e0e0e 0.01%, #0e0e0e 100%);*/
+/*    border-radius: 5px;*/
+/*    font-weight: 500;*/
+/*    font-size: 24px;*/
+/*    line-height: 30px;*/
+/*    text-align: justify;*/
+/*    letter-spacing: -1px;*/
+/*    color: rgba(255, 255, 255, 0.5);*/
+/*}*/
+
+/*.pop__select {*/
+/*    font-weight: 500;*/
+/*    font-size: 18px;*/
+/*    line-height: 125.1%;*/
+/*    text-align: justify;*/
+/*    letter-spacing: -1px;*/
+/*}*/
 
 /*BLOG*/
 
