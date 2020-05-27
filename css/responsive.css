@@ -86,9 +86,6 @@
 }
 
 @media screen and (max-width: 576px) {
-
-
-
     .blog-card:first-child {
         margin-top: 145px;
     }
@@ -162,10 +159,18 @@
         margin: 57px auto 0 auto;
     }
 
+    /*contacts 576*/
+
     .address-card {
         right: 20%;
         top: 85px;
     }
+
+    .contacts-popup__wrapper {
+        width: 292px;
+    }
+
+    /*it-start 576*/
 
     .it-start_desktop-vacancy {
         display: none;

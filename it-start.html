@@ -25,6 +25,10 @@
         <link rel="stylesheet" type="text/css" href="slick/slick.css" />
     </head>
     <body>
+        <div class="unblurred-block vacancy-popup">
+            <p class="unblurred-block">vacancy-popup</p>
+        </div>
+
         <div class="container-fluid header-position">
             <div class="container">
                 <header class="row">
@@ -38,7 +42,7 @@
                         <nav class="nav nav__wrapper col-8">
                             <ul class="nav-list d-flex">
                                 <li class="nav-list__item d-flex">
-                                    <a href="#" class="nav-list__link">
+                                    <a href="./vacancies.html" class="nav-list__link">
                                         Вакансии
                                     </a>
                                 </li>
@@ -86,6 +90,7 @@
 
         <div class="container-fluid it-start-bg">
             <div class="container container_width-100">
+
                 <section class="section-wrapper">
                     <h2 class="app-title app-title_it-start w-100">Старт карьеры</h2>
                     <p class="it-start__overview">
@@ -266,17 +271,26 @@
                     </div>
                 </section>
                 <div class="it-start_mobile-vacancy">
-                    <ul id="it-start-mobile__chooser" class="it-start-mobile__chooser">
-                        <li class="it-start-mobile__chooser-item it-start-mobile__chooser-item_show">
-                            <span>Выбурите направление</span><i class="it-start-mobile__chooser-icon zmdi zmdi-chevron-down"></i>
-                        </li>
-                        <li class="it-start-mobile__chooser-item it-start-mobile__chooser-item_hidden" data-value="#m2elife">
-                            <span>Trainee PHP Developer</span><i class="it-start-mobile__chooser-icon zmdi zmdi-chevron-down"></i>
-                        </li>
-                        <li class="it-start-mobile__chooser-item it-start-mobile__chooser-item_hidden" data-value="#m2ecareer">
-                            <span>Customer Service</span><i class="it-start-mobile__chooser-icon zmdi zmdi-chevron-down"></i>
-                        </li>
-                    </ul>
+                    <div class="form-group">
+                        <div class="custom-select">
+                            <select>
+                                <option value="0">Выберите направление</option>
+                                <option value="1">Trainee PHP Developer</option>
+                                <option value="2">Customer Service</option>
+                            </select>
+                        </div>
+                    </div>
+<!--                    <ul id="it-start-mobile__chooser" class="it-start-mobile__chooser">-->
+<!--                        <li class="it-start-mobile__chooser-item it-start-mobile__chooser-item_show">-->
+<!--                            <span>Выбурите направление</span><i class="it-start-mobile__chooser-icon zmdi zmdi-chevron-down"></i>-->
+<!--                        </li>-->
+<!--                        <li class="it-start-mobile__chooser-item it-start-mobile__chooser-item_hidden" data-value="#m2elife">-->
+<!--                            <span>Trainee PHP Developer</span><i class="it-start-mobile__chooser-icon zmdi zmdi-chevron-down"></i>-->
+<!--                        </li>-->
+<!--                        <li class="it-start-mobile__chooser-item it-start-mobile__chooser-item_hidden" data-value="#m2ecareer">-->
+<!--                            <span>Customer Service</span><i class="it-start-mobile__chooser-icon zmdi zmdi-chevron-down"></i>-->
+<!--                        </li>-->
+<!--                    </ul>-->
                     <div class="mobile-position-card">
                         <p class="mobile-position-card__title">Must have:</p>
                         <ul class="mobile-position-card__content-list">
@@ -427,6 +441,9 @@
                 </footer>
             </div>
         </div>
+
+
+
         <script
             src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

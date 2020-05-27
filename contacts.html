@@ -38,7 +38,7 @@
                         <nav class="nav nav__wrapper col-8">
                             <ul class="nav-list d-flex">
                                 <li class="nav-list__item d-flex">
-                                    <a href="#" class="nav-list__link">
+                                    <a href="./vacancies.html" class="nav-list__link">
                                         Вакансии
                                     </a>
                                 </li>
@@ -194,7 +194,7 @@
                         </svg>
                         <a class="contact__text" href="#">m2e-limited</a>
                     </div>
-                    <div class="contact">
+                    <div class="contact contacts">
                         <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 class="icon-hover-fill"
@@ -227,7 +227,7 @@
                 </a>
             </div>
             <div class="button__wrapper button__wrapper_contacts-long">
-                <a class="button button-mobile_long" href="#">ЗАДАТЬ ВОПРОС</a>
+                <a class="button button-mobile_long contacts" href="#">ЗАДАТЬ ВОПРОС</a>
             </div>
         </div>
 
@@ -445,6 +445,54 @@
                 </footer>
             </div>
         </div>
+
+        <div class="unblurred-block bg-block">
+            <div class="unblurred-block contacts-popup__wrapper">
+                <img class="unblurred-block popup-close__button_contacts" src="./img/popup-close.svg" alt="">
+                <form onsubmit="onSubmit()" class="unblurred-block" action="/form">
+                    <div class="unblurred-block credentials">
+                        <p class="unblurred-block form-label">Имя и Фамилия</p>
+                        <input id="name-input" class="unblurred-block form-input" type="text" placeholder="Best Candidate"/>
+                        <div class="unblurred-block valid-line"></div>
+                        <div class="unblurred-block invalid-icon">
+                            <img class="unblurred-block" src="./img/invalid-form-icon.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="unblurred-block email">
+                        <p class="unblurred-block form-label">E-mail</p>
+                        <input id="email-input" class="unblurred-block form-input" type="text" placeholder="best_сandidate@gmail.com"/>
+                        <div class="unblurred-block valid-line"></div>
+                        <div class="unblurred-block invalid-icon">
+                            <img class="unblurred-block" src="./img/invalid-form-icon.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="unblurred-block phone">
+                        <p class="unblurred-block form-label">Телефон</p>
+                        <input id="phone-input" class="unblurred-block form-input" type="text" placeholder="+380 67 777 77 77"/>
+                        <div class="unblurred-block valid-line"></div>
+                        <div class="unblurred-block invalid-icon">
+                            <img class="unblurred-block" src="./img/invalid-form-icon.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="unblurred-block message">
+                        <p class="unblurred-block form-label">Сообщение</p>
+                        <textarea id="text-textarea" class="unblurred-block form-textarea" type="text" placeholder="Напишите ваше сообщение"></textarea>
+                        <div class="unblurred-block valid-line textarea-valid-line"></div>
+                        <div class="unblurred-block invalid-icon">
+                            <img class="unblurred-block" src="./img/invalid-form-icon.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="unblurred-block button__wrapper button__wrapper_contacts-long">
+                        <button id="send-question" class="unblurred-block button w-100" href="#">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <script
             src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
