@@ -8,119 +8,91 @@ $(document).ready(function() {
     "cooperation"   : "longterm",
     "bureaucracy"   : null,
 }`]}, { element: $('.typed-slide-2'), data: [`"M2E": {
-    "company_type"  : "product",
-    "regions"       : ["UK", "UA"],
-    "high_priority" : "quality",
-    "cooperation"   : "longterm",
-    "bureaucracy"   : null,
+    "work_hours"    : "flexible",
+    "vacation_days" : 15,
+    "days_off"      : 5,
+    "sick_leave"    : "paid"
+}`]}, { element: $('.typed-slide-3'), data: [`"M2E": {
+    "education" : {
+        "mentoring"          : "full",
+        "code_review"        : "regular",
+        "conferences"        : "included",
+        "additional_courses" : "enabled"
+    }
+}`]}, { element: $('.typed-slide-4'), data: [`"M2E": {
+    "benefits" : {
+        "english_classes"  : "free",
+        "medicine_package" : "optional",
+        "massage_hours"    : "healthful",
+        "sport_activities" : "supported"
+    }
+}`]}, { element: $('.typed-slide-5'), data: [`"M2E": {
+    "entertainment" : {
+        "team_buildings"   : "usual",
+        "corporates_count" : 4,
+        "office_parties"   : "often",
+        "happiness_level"  : "high"
+    }
 }`]}];
 
     $('.vacancies-slider').on("init", function() {
-        setTypedByIndexSlide(0);
+        initTyped(0)
     })
 
     let vacSlide = $('.vacancies-slider').slick({
         slidesToShow: 1,
         arrows: false,
-        // fade: true,
+        fade: true,
         cssEase: 'linear',
-        // autoplay: true,
-        autoplaySpeed: 2000,
-        dots: true
+        dots: true,
+
     })
 
     vacSlide.on("beforeChange", function (){
-        allTypedReset();
-        // console.log(vacSlide.slick('slickCurrentSlide'));
+        removeTypeds();
     });
 
     vacSlide.on("afterChange", function (){
         let index = vacSlide.slick('slickCurrentSlide');
 
-        setTypedByIndexSlide(index);
+        initTyped(index);
     });
 
+    let interval;
 
+    function initTyped(index) {
+        console.log(index);
+        let config = typedArr[index];
+        let spanElement = $(document.createElement('span'));
+        let parentElement = config.element;
 
+        parentElement.append(spanElement);
 
+        let typedElement = config.element.children();
 
+        typedElement.typed({
+            strings: config.data,
+            typeSpeed: 0,
+            startDelay: 0,
+            callback: function () {
+                $(typedElement).html(parseJsonToHtml(typedElement.text()));
 
-    function allTypedReset() {
+                interval = setTimeout(function() {
+                    console.log('Next slide!')
+                    vacSlide.slick('slickNext');
+                }, 1000)
+            }
+        });
+    }
+
+    function removeTypeds() {
+        clearTimeout(interval);
+
         typedArr.forEach((item) => {
-            item.element.data('typed', null);
+            item.element.children().typed('reset');
+            item.element.children().remove()
         })
     }
-
-    function setTypedByIndexSlide(index) {
-        let typedObj = typedArr[index];
-
-        if (typedObj) {
-            typedObj.element.typed({
-                strings: typedObj.data,
-                typeSpeed: 0,
-                startDelay: 0,
-                callback: function () {
-                    $(typedObj.element + 'span').hide();
-
-                    let text = $(typedObj.element[index]).text();
-
-                    $(typedObj.element[index]).html(parseJsonToHtml(text));
-                }
-            })
-        }
-    }
-
-//     $('.typed-slide-1').typed({
-//         strings: [`"M2E": {
-//     "company_type"  : "product",
-//     "regions"       : ["UK", "UA"],
-//     "high_priority" : "quality",
-//     "cooperation"   : "longterm",
-//     "bureaucracy"   : null,
-// }`],
-//         typeSpeed: 0,
-//         showCursor: true,
-//         startDelay: 0,
-//         callback: function () {
-//             $('.typed-slide-1 + span').hide();
-//
-//             let text = $($('.typed-slide-1')[0]).text();
-//
-//             $($('.typed-slide-1')[0]).html(parseJsonToHtml(text));
-//         }
-//     });
-
-    console.log();
-
-    // setTimeout(() => {
-    //     console.log('reset work')
-    //     $('.typed-slide-1').removeData('typed')
-    // }, 7000)
-
-    // ########################################
-
-    $('.typed-slide-2').typed({
-        strings: [`"M2E": {
-    "company_type"  : "product",
-    "regions"       : ["UK", "UA"],
-    "high_priority" : "quality",
-    "cooperation"   : "longterm",
-    "bureaucracy"   : null,
-}`],
-        typeSpeed: 0,
-        showCursor: true,
-        startDelay: 0,
-        callback: function () {
-            $('.typed-slide-2 + span').hide();
-            let text = $($('.typed-slide-2')[1]).text();
-
-            $($('.typed-slide-2')[1]).html(parseJsonToHtml(text));
-        }
-    });
-
-
-
-
 
     function parseJsonToHtml(json) {
         if (typeof json != 'string') {
