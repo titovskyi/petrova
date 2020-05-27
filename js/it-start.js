@@ -36,7 +36,7 @@ $(document).ready(function () {
             if (i === columnIndex) {
                 $(rowChildren[i]).toggleClass('active');
 
-                if($(rowChildren[i]).hasClass('active')) {
+                if ($(rowChildren[i]).hasClass('active')) {
                     $('.it-start__button').attr('disabled', false);
                     $('.button__hint').hide();
                 } else {
@@ -47,7 +47,6 @@ $(document).ready(function () {
                 $(rowChildren[i]).removeClass('active');
             }
         }
-
     }
 
     // ########################################
@@ -55,11 +54,11 @@ $(document).ready(function () {
     function onClickVacancy() {
         $('.vacancy-popup').hide();
 
-        $('.it-start__button')[0].addEventListener('click', function() {
+        $('.it-start__button')[0].addEventListener('click', function () {
             $('.vacancy-popup').show();
 
             $('body :not(.unblurred-block)').css('filter', 'blur(10px)');
-        })
+        });
     }
 
     // ########################################

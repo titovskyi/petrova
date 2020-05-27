@@ -27,6 +27,14 @@ $(document).ready(function () {
         initCounter(1000, '.count-num', '.statistics');
     }
 
+    // ########################################
+
+    initPopupListeners();
+
+    checkInputValid();
+
+    // ########################################
+
     function runCounter(items, options) {
         items.forEach((item) => {
             runInterval(item, options);
@@ -107,6 +115,194 @@ $(document).ready(function () {
             }
         });
     }
+
+    // ########################################
+
+    function initPopupListeners() {
+        const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
+
+        $('#send-question').attr('disabled', true);
+
+        $('.open-popup-button').each(function () {
+            this.addEventListener('click', function () {
+                $('.app-container').addClass('blur-block');
+                $('.popup__wrapper').addClass('contacts-popup__wrapper_show');
+
+                inputArray.forEach((input) => {
+                    input.val('');
+                });
+
+                $('.popup-close__button').on('click', function () {
+                    resetForm(inputArray);
+
+                    $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
+                    $('.app-container').removeClass('blur-block');
+                });
+
+                if($('.button_add-file')) {
+
+                    const addFileButton = $('.button_add-file');
+                    const addFileInput = addFileButton.prev();
+
+                    addFileButton.on('click', function() {
+                        addFileInput.click();
+                    })
+                }
+            });
+        });
+    }
+
+    function checkInputValid() {
+        const nameReg = /^[a-zA-Z\u0400-\u04FF\s]*$/;
+        const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        const phoneReg = /^\+?3?8?(0\d{9})$/;
+        const messageReg = /^.{1,2800}$/;
+        const notEmpty = /.{1,}/;
+
+        const regexpArray = [nameReg, emailReg, phoneReg, messageReg, notEmpty];
+        const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea'), $('#file-input')];
+
+        for (let i = 0; inputArray.length > i; i++) {
+            inputArray[i].on('input', function () {
+                const inputValue = inputArray[i].val();
+
+                if (inputValue && regexpArray[i].test(inputValue)) {
+                    inputArray[i].parent().removeClass('invalid').addClass('valid');
+                } else {
+                    inputArray[i].parent().removeClass('valid').addClass('invalid');
+                }
+
+                checkFormValid(regexpArray, inputArray);
+            });
+        }
+
+        checkFormValid(regexpArray, inputArray);
+    }
+
+    function checkFormValid(regexpArray, inputArray) {
+        let validForm = false;
+        const CVindex = inputArray.length - 1;
+        const vacancyChoosed = !!Number($('#vacancy-select').val());
+
+        validForm = regexpArray[CVindex].test(inputArray[CVindex].val());
+
+        if(validForm === false) {
+            for (let i = 0; inputArray.length > i; i++) {
+                if(i != CVindex) {
+                    if (regexpArray[i].test(inputArray[i].val())) {
+                        validForm = true;
+                    } else {
+                        validForm = false;
+
+                        break;
+                    }
+                }
+            }
+        }
+
+
+        if (validForm && vacancyChoosed) {
+            $('#send-question').attr('disabled', false);
+        } else {
+            $('#send-question').attr('disabled', true);
+        }
+    }
+
+    function resetForm(inputArray) {
+        inputArray.forEach((input) => {
+            if (input.parent().hasClass('invalid')) {
+                input.parent().removeClass('invalid');
+            } else if (input.parent().hasClass('valid')) {
+                input.parent().removeClass('valid');
+            }
+        });
+
+        $('#send-question').attr('disabled', true);
+
+        $('#vacancy-select').prop('selectedIndex',0);
+    }
+
+    // ########################################
+
+    function trancateText() {
+        if(($('#vacancy-card-content__about').height() > 64)) {
+            $('.vacancy-trancate-points').addClass('vacancy-trancate-points_show');
+        }
+    }
+
+    // ########################################
+
+    // Vacancy Select
+
+    customizeVacancySelect();
+
+    function customizeVacancySelect() {
+        var x, i, j, selElmnt, a, b, c;
+        /* Look for any elements with the class "custom-select": */
+        x = document.getElementsByClassName('vacancy-custom-select');
+        for (i = 0; i < x.length; i++) {
+            selElmnt = x[i].getElementsByTagName('select')[0];
+            /* For each element, create a new DIV that will act as the selected item: */
+            a = document.createElement('DIV');
+            a.setAttribute('class', 'vacancy-select-selected');
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            /* For each element, create a new DIV that will contain the option list: */
+            b = document.createElement('DIV');
+            b.setAttribute('class', 'vacancy-select-items vacancy-select-hide');
+            for (j = 1; j < selElmnt.length; j++) {
+                /* For each option in the original select element,
+                create a new DIV that will act as an option item: */
+                c = document.createElement('DIV');
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener('click', function (e) {
+                    /* When an item is clicked, update the original select box,
+                    and the selected item: */
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName('select')[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+
+                        if (s.options[i].innerHTML === this.innerHTML) {
+                            s.selectedIndex = i;
+                            $(a).addClass('vacancy-select-selected_white');
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName('vacancy-same-as-selected');
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute('class');
+                            }
+                            this.setAttribute('class', 'vacancy-same-as-selected');
+
+                            $(this).closest('.vacancy-card').addClass('active');
+                            trancateText();
+
+                            break;
+                        }
+                    }
+                    h.click();
+
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+
+            a.addEventListener('click', function (e) {
+
+                /* When the select box is clicked, close any other select boxes,
+                and open/close the current select box: */
+                e.stopPropagation();
+                closeAllSelect(this);
+                checkInputValid();
+                this.nextSibling.classList.toggle('vacancy-select-hide');
+                this.classList.toggle('vacancy-select-arrow-active');
+            });
+        }
+
+    }
+
+    // ########################################
+
+
 
     // Custom select
 
@@ -303,8 +499,6 @@ $(document).ready(function () {
         });
     }
 
-
-
     // $('.typed-slide-str1').typed({
     //     strings: ['"M2E" : {'],
     //     typeSpeed: 20,
@@ -370,7 +564,6 @@ $(document).ready(function () {
     //         });
     //     }
     // });
-
 
     // $(".typed-slide-str2").typed({
     // 	strings: [`"company_type"  : "product"`], typeSpeed: 500, showCursor

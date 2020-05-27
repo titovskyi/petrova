@@ -44,23 +44,21 @@ $(document).ready(function () {
         const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
 
         $('#send-question').attr('disabled', true);
-        $('.contacts').each(function () {
+        $('.open-popup-button').each(function () {
             this.addEventListener('click', function () {
-                $('.contacts-popup__wrapper').css('display', 'block');
-                $('.bg-block').css('display', 'block');
-                $('body :not(.unblurred-block)').css('filter', 'blur(10px)');
+
+                $('.app-container').addClass('blur-block')
+                $('.popup__wrapper').addClass('contacts-popup__wrapper_show');
 
                 inputArray.forEach((input) => {
                     input.val('');
                 });
             });
         });
-        $('.popup-close__button_contacts')[0].addEventListener('click', function () {
+        $('.popup-close__button')[0].addEventListener('click', function () {
             resetForm(inputArray);
-
-            $('.contacts-popup__wrapper').css('display', 'none');
-            $('.bg-block').css('display', 'none');
-            $('body :not(.unblurred-block)').css('filter', 'none');
+            $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
+            $('.app-container').removeClass('blur-block');
         });
     }
 

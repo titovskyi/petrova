@@ -298,6 +298,17 @@ body {
 
 }
 
+.button_add-file {
+    border: 2px dashed #fde724;
+    font-weight: normal;
+    text-transform: none;
+    outline: none!important;
+}
+
+.button_add-file img {
+    margin-right: 7px;
+}
+
 .button-mobile_long {
     display: none;
     width: 290px;
@@ -314,7 +325,7 @@ body {
     text-align: center;
 }
 
-.button__wrapper_contacts-long {
+.button__wrapper_long {
     margin: 18px auto 0;
 }
 
@@ -1253,6 +1264,9 @@ body {
 /*    height: 52px;*/
 /*}*/
 
+
+
+
 /* #################################### */
 
 /*\\\\\\\\\\\\POP-UP/////////////!*/
@@ -1880,9 +1894,6 @@ body {
     color: #fde724 !important;
 }
 
-
-
-
 /*CONTACTS END*/
 
 /*it-start*/
@@ -2179,32 +2190,201 @@ body {
 
 /*VACANCY POPUP*/
 
-.vacancy-popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.blur-block {
+    pointer-events: none;
+    display: block;
+    filter: blur(10px);
 }
 
-.bg-block {
+.vacancy-custom-select {
+    position: relative;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    border: none;
+    outline: none !important;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 24px;
+}
+
+.vacancy-custom-select select {
     display: none;
-    width: 100%;
-    height: 100%;
+}
+
+.vacancy-select-selected {
+    position: relative;
+    width: 300px;
+}
+
+/* Style the arrow inside the select element: */
+.vacancy-select-selected:after {
     position: absolute;
-    top: 0;
+    content: '';
+    top: 18px;
+    right: 10px;
+    background: url('../img/arrow-bottom-grey.png') no-repeat center center;
+    width: 14px;
+    height: 7px;
+}
+
+.vacancy-card.active .vacancy-select-selected:after {
+    background: url('../img/dropdown-arrow.png') no-repeat center center;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.vacancy-select-selected.vacancy-select-arrow-active:after {
+    transform: rotate(180deg);
+}
+/*color: #FDE724;*/
+/* style the items (options), including the selected item: */
+.vacancy-select-items div{
+    font-family: 'Rubik', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 125.1%;
+    letter-spacing: -1px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.vacancy-select-selected {
+    padding: 8px 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 125.1%;
+    letter-spacing: -1px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.vacancy-select-selected_white {
+    color: #ffffff;
+}
+
+    /* Style items (options): */
+.vacancy-select-items {
+    width: 300px;
+    height: 262px;
+    overflow: scroll;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, #0E0E0E 0.01%, #0E0E0E 100%);
+    border-radius: 5px;
+    top: 100%;
     left: 0;
+    right: 0;
+    z-index: 99;
 }
 
-.contacts-popup__wrapper {
+/* Hide the items when the select box is closed: */
+.vacancy-select-hide {
+    display: none;
+}
+
+.vacancy-select-items div:hover,
+.vacancy-same-as-selected {
+    color: #fde724;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.vacancy-select-items div {
+    color: #ffffff;
+}
+
+.vacancy-select-items div.vacancy-same-as-selected {
+    color: #fde724;
+}
+
+.popup__wrapper {
     display: none;
     position: absolute;
-    top: 50%;
+    top: 50px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,0);
+}
+
+.popup__wrapper_vacancy {
+    width: 446px;
+}
+
+.popup__wrapper_contacts {
     width: 440px;
-    padding: 15px 15px 30px 15px;
-    background-color: #000000;
+}
+
+.vacancy-card {
+    width: 446px;
+    height: 183px;
+    background: #131313;
+    border-left: #303030 solid 10px;
     border-radius: 10px;
+    padding: 21px 23px;
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 125.1%;
+    letter-spacing: -1px;
+    color: #FDE724;
+}
+
+.vacancy-card.active {
+    color: rgba(255, 255, 255, 0.5);
+    border-left: #FDE724 solid 10px;
+}
+
+.vacancy-card-content .vacancies-tags {
+    margin-top: 15px;
+}
+
+.vacancy-card-content__about-wrapper {
+    height: 64px;
+    position: relative;
+    overflow: hidden;
+}
+
+.vacancy-trancate-points {
+    position: absolute;
+    bottom: -3px;
+    left: 248px;
+    width: 300px;
+    background-color: #131313;
+    display: none;
+}
+
+.vacancy-trancate-points_show {
+    display: block;
+}
+
+.vacancy-card-content .vacancies-tag-item {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #FFFFFF;
+    transition: all 0.2s;
+    background: #272727;
+    border-radius: 11px;
+    height: 22px;
+    white-space: nowrap;
+    padding: 3px 10px;
+    letter-spacing: 0;
+}
+
+.form-wrapper {
+    width: 437px;
+    background: #000;
+    margin: 0 auto;
+    padding: 15px 15px 30px 15px;
+}
+
+.contacts-popup__wrapper_show {
+    display: block;
 }
 
 .form-label {
@@ -2216,11 +2396,16 @@ body {
     margin: 18px 0 9px 5px;
 }
 
+.form-label_or {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+    line-height: 15px;
+}
+
 .credentials .form-label {
     margin-top: 0;
 }
-
-
 
 .form-input {
     height: 52px;
@@ -2236,11 +2421,6 @@ body {
     color: #FFFFFF;
     outline: none;
 }
-
-/*input:internal-autofill-selected {*/
-/*    background-color: #262626;*/
-/*    color: #ffffff;*/
-/*}*/
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -2310,13 +2490,17 @@ input:-webkit-autofill:active {
     border: none;
 }
 
+.form-add-file {
+    display: none;
+}
+
 .button:disabled {
     background-color: inherit;
     color: rgba(252, 231, 38, 0.15);
     border: 2px solid rgba(252, 231, 38, 0.15);
 }
 
-.popup-close__button_contacts {
+.popup-close__button {
     position: absolute;
     top: 17px;
     right: 17px;
@@ -2327,7 +2511,7 @@ input:-webkit-autofill:active {
 /*TEXTAREA SCROLLBAR*/
 ::-webkit-scrollbar {
     width: 7px;
-    height: 42px;
+    height: 0;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
