@@ -5,7 +5,17 @@ $(document).ready(function () {
         slidesToShow: 1,
         infinite: true,
         arrows: false,
-        asNavFor: '.nav-slider'
+        asNavFor: '.nav-slider',
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    infinite: true,
+                    dots: true,
+                }
+            }
+        ]
     });
     $('.nav-slider').slick({
         centerMode: true,
@@ -17,6 +27,12 @@ $(document).ready(function () {
         infinite: true,
         prevArrow: '.prev-arrow',
         nextArrow: '.next-arrow'
+    });
+
+    // Mobile menu
+
+    $('.mobile-menu-button').on('click', function () {
+        $('.mobile-animated-icon').toggleClass('open');
     });
 
     // Counter

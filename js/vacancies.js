@@ -14,10 +14,10 @@ $(document).ready(function() {
     "sick_leave"    : "paid"
 }`]}, { element: $('.typed-slide-3'), data: [`"M2E": {
     "education" : {
-        "mentoring"          : "full",
-        "code_review"        : "regular",
-        "conferences"        : "included",
-        "additional_courses" : "enabled"
+        "mentoring"     : "full",
+        "code_review"   : "regular",
+        "conferences"   : "included",
+        "extra_courses" : "enabled"
     }
 }`]}, { element: $('.typed-slide-4'), data: [`"M2E": {
     "benefits" : {
@@ -61,7 +61,6 @@ $(document).ready(function() {
     let interval;
 
     function initTyped(index) {
-        console.log(index);
         let config = typedArr[index];
         let spanElement = $(document.createElement('span'));
         let parentElement = config.element;
@@ -72,15 +71,14 @@ $(document).ready(function() {
 
         typedElement.typed({
             strings: config.data,
-            typeSpeed: 0,
+            typeSpeed: 50,
             startDelay: 0,
             callback: function () {
                 $(typedElement).html(parseJsonToHtml(typedElement.text()));
 
                 interval = setTimeout(function() {
-                    console.log('Next slide!')
                     vacSlide.slick('slickNext');
-                }, 1000)
+                }, 3000)
             }
         });
     }
