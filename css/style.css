@@ -1158,27 +1158,23 @@ body {
 }
 
 .string {
-    color: green;
+    color: #fde724;
 }
 
 .number {
-    color: #2979ff;
+    color: #fde724;
 }
 
 .boolean {
-    color: blue;
+    color: #fde724;
 }
 
 .null {
-    color: magenta;
+    color: #fde724;
 }
 
 .key {
     color: rgba(255, 255, 255, 0.7);
-}
-
-.key:first-child {
-    color: #fde724;
 }
 
 .code-wrapper {
@@ -2897,6 +2893,32 @@ input:-webkit-autofill:active {
 
 @media screen and (max-width: 341px) {
 
+}
+
+/* VACANCIES */
+
+@media screen and (max-width: 767px) {
+    .code-wrapper {
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    .vacancies-slider {
+        height: 180px;
+    }
+
+    .vacancies-top {
+        height: 320px;
+    }
+
+    .vacancies-filter {
+        margin-top: 35px;
+    }
+
+    .vacancies-list {
+        margin-top: 20px;
+    }
 }
 
 /* ################################## */
