@@ -1,37 +1,39 @@
 $(document).ready(function() {
     // Typed
 
-let typedArr = [{ element: $('.typed-slide-1'), data: [`"M2E":  {
-    "company_type":  "product",
-    "regions":  ["UK", "UA"],
-    "high_priority":  "quality",
-    "cooperation":  "longterm",
-    "bureaucracy":  null,
-}`]}, { element: $('.typed-slide-2'), data: [`"M2E":  {
-    "work_hours": "flexible",
-    "vacation_days": 15,
-    "days_off": 5,
-    "sick_leave": "paid"
-}`]}, { element: $('.typed-slide-3'), data: [`"M2E":  {
-    "education":  {
-        "mentoring":  "full",
-        "code_review":  "regular",
-        "conferences":  "included",
-        "extra_courses":  "enabled"
+let typedArr = [{ element: $('.typed-slide-1'),
+    data: [
+`"M2E": {
+    "company_type"  : "product",
+    "regions"       : ["UK", "UA"],
+    "high_priority" : "quality",
+    "cooperation"   : "longterm",
+    "bureaucracy"   : null,
+}`]}, { element: $('.typed-slide-2'), data: [`"M2E": {
+    "work_hours"    : "flexible",
+    "vacation_days" : 15,
+    "days_off"      : 5,
+    "sick_leave"    : "paid"
+}`]}, { element: $('.typed-slide-3'), data: [`"M2E": {
+    "education": {
+        "mentoring"     :  "full",
+        "code_review"   :  "regular",
+        "conferences"   :  "included",
+        "extra_courses" :  "enabled"
     }
-}`]}, { element: $('.typed-slide-4'), data: [`"M2E":  {
-    "benefits":  {
-        "english_classes":  "free",
-        "medicine_package":  "optional",
-        "massage_hours":  "healthful",
-        "sport_activities":  "supported"
+}`]}, { element: $('.typed-slide-4'), data: [`"M2E": {
+    "benefits": {
+        "english_classes"  :  "free",
+        "medicine_package" :  "optional",
+        "massage_hours"    :  "healthful",
+        "sport_activities" :  "supported"
     }
-}`]}, { element: $('.typed-slide-5'), data: [`"M2E":  {
-    "entertainment":  {
-        "team_buildings":  "usual",
-        "corporates_count":  4,
-        "office_parties":  "often",
-        "happiness_level":  "high"
+}`]}, { element: $('.typed-slide-5'), data: [`"M2E": {
+    "entertainment": {
+        "team_buildings"   :  "usual",
+        "corporates_count" :  4,
+        "office_parties"   :  "often",
+        "happiness_level"  :  "high"
     }
 }`]}];
 
@@ -71,14 +73,14 @@ let typedArr = [{ element: $('.typed-slide-1'), data: [`"M2E":  {
 
         typedElement.typed({
             strings: config.data,
-            typeSpeed: 50,
+            typeSpeed: 0,
             startDelay: 0,
             callback: function () {
                 $(typedElement).html(parseJsonToHtml(typedElement.text()));
 
                 interval = setTimeout(function() {
                     vacSlide.slick('slickNext');
-                }, 3000);
+                }, 300000);
             }
         });
     }
