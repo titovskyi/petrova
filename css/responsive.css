@@ -180,6 +180,24 @@
         display: block;
     }
 
+
+
+}
+
+@media screen and (max-width: 450px) {
+    .popup__wrapper_vacancy {
+        width: 100%;
+    }
+
+    .vacancy-card {
+        width: 100%;
+    }
+
+    .popup__wrapper {
+        top:0;
+        left: 0;
+
+    }
 }
 
 @media screen and (max-width: 341px) {
@@ -187,3 +205,4 @@
         margin: 0 5px;
     }
 }
+

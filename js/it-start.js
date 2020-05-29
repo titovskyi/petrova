@@ -1,15 +1,7 @@
 $(document).ready(function () {
     // ########################################
 
-    setInitState();
-
-    chooserChange();
-
-    onClickVacancy();
-
-    // ########################################
-
-    function setInitState() {
+    (function setInitState() {
         const chooseButtons = $('.start-direction__button');
         const allRows = chooseButtons.parents('.position').children();
 
@@ -21,7 +13,7 @@ $(document).ready(function () {
                 findRowChildren(allRows, i);
             });
         }
-    }
+    })();
 
     function findRowChildren(allRows, buttonIndex) {
         for (let i = 0; allRows.length > i; i++) {
@@ -51,19 +43,7 @@ $(document).ready(function () {
 
     // ########################################
 
-    function onClickVacancy() {
-        $('.vacancy-popup').hide();
-
-        $('.it-start__button')[0].addEventListener('click', function () {
-            $('.vacancy-popup').show();
-
-            $('body :not(.unblurred-block)').css('filter', 'blur(10px)');
-        });
-    }
-
-    // ########################################
-
-    function chooserChange() {
+    (function chooserChange() {
         $('.mobile-position-card').hide();
         $('.it-start__button_mobile').hide();
 
@@ -82,7 +62,134 @@ $(document).ready(function () {
             $('.it-start__button_mobile').show();
             $('.it-start__button_mobile').attr('disabled', false);
         });
+    })();
+
+    (function () {
+        $('#send-question').attr('disabled', true);
+
+        $('.it-start__button').on('click', function () {
+            $('.app-container').addClass('blur-block');
+            $('.it-start__popup-overlay').addClass('show-overlay');
+            $('.popup__wrapper_vacancy').addClass('popup__wrapper_show');
+
+            clearForm(true);
+            checkItStartPopupInputValid();
+        });
+
+        if ($('.button_add-file')) {
+            const addFileButton = $('.button_add-file');
+            const addFileInput = addFileButton.prev();
+
+            addFileButton.on('click', function () {
+                addFileInput.click();
+            });
+        }
+
+        $('.it-start__popup-overlay').on('click', function() {
+            if (confirm('You will lose your form data!')) {
+                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
+                $('.app-container').removeClass('blur-block');
+                $('.it-start__popup-overlay').removeClass('show-overlay');
+            } else {
+                return false;
+            }
+        });
+
+        $('.popup-close__button').on('click', function () {
+            if (confirm('You will lose your form data!')) {
+                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
+                $('.app-container').removeClass('blur-block');
+                $('.it-start__popup-overlay').removeClass('show-overlay');
+            } else {
+                return false;
+            }
+        });
+    })();
+
+    function checkItStartPopupInputValid() {
+        const nameReg = /^[a-zA-Z\u0400-\u04FF\s]*$/;
+        const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        const phoneReg = /^\+?3?8?(0\d{9})$/;
+        const messageReg = /^.{1,2800}$/;
+        const notEmpty = /.{1,}/;
+
+        const regexpArray = [nameReg, emailReg, phoneReg, messageReg, notEmpty];
+        const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea'), $('#file-input')];
+
+        for (let i = 0; inputArray.length > i; i++) {
+            inputArray[i].on('blur', function () {
+                const inputValue = inputArray[i].val();
+
+                if (inputValue && regexpArray[i].test(inputValue)) {
+                    inputArray[i].parent().removeClass('invalid').addClass('valid');
+                } else {
+                    inputArray[i].parent().removeClass('valid').addClass('invalid');
+                }
+
+                checkItStartFormValid(regexpArray, inputArray);
+            });
+        }
+
+        checkItStartFormValid(regexpArray, inputArray);
     }
+
+    function checkItStartFormValid(regexpArray, inputArray) {
+        let validForm = false;
+        const CVindex = inputArray.length - 1;
+
+        validForm = regexpArray[CVindex].test(inputArray[CVindex].val());
+
+        if (validForm === false) {
+            for (let i = 0; inputArray.length > i; i++) {
+                if (i != CVindex) {
+                    if (regexpArray[i].test(inputArray[i].val())) {
+                        validForm = true;
+                    } else {
+                        validForm = false;
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (validForm) {
+            $('#send-question').attr('disabled', false);
+        } else {
+            $('#send-question').attr('disabled', true);
+        }
+    }
+
+    function clearForm(withFile) {
+        let inputArray = [];
+
+        if (withFile) {
+            inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea'), $('#file-input')];
+        } else {
+            inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
+        }
+
+        inputArray.forEach((input) => {
+            input.val('');
+        });
+
+        resetForm(inputArray);
+    }
+
+    function resetForm(inputArray) {
+        inputArray.forEach((input) => {
+            if (input.parent().hasClass('invalid')) {
+                input.parent().removeClass('invalid');
+            } else if (input.parent().hasClass('valid')) {
+                input.parent().removeClass('valid');
+            }
+        });
+
+        $('#send-question').attr('disabled', true);
+
+        $('#vacancy-select').prop('selectedIndex', 0);
+    }
+
 
     // Custom select
     // TODO merge with vacancies select & popups
@@ -118,12 +225,13 @@ $(document).ready(function () {
                         y = this.parentNode.getElementsByClassName('same-as-selected');
                         for (k = 0; k < y.length; k++) {
                             y[k].removeAttribute('class');
-                            $('.mobile-position-card').hide();
-                            $('.it-start__button_mobile').hide();
+
+                            $('.mobile-position-card').removeClass('show-mobile-element');
+                            $('.it-start__button_mobile').removeClass('show-mobile-element');
                         }
                         this.setAttribute('class', 'same-as-selected');
-                        $('.mobile-position-card').show();
-                        $('.it-start__button_mobile').show();
+                        $('.mobile-position-card').addClass('show-mobile-element');
+                        $('.it-start__button_mobile').addClass('show-mobile-element');
                         $('.it-start__button_mobile').attr('disabled', false);
                         break;
                     }

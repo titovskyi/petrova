@@ -1,21 +1,21 @@
 $(document).ready(function () {
     // ########################################
 
-    $('.lead-slider').slick({
+    $('.lead-slider_contacts').slick({
         centerMode: true,
         centerPadding: '10%',
         slidesToShow: 3,
         infinite: true,
         arrows: false,
         focusOnSelect: true,
-        asNavFor: '.nav-slider'
+        asNavFor: '.nav-slider_contacts'
     });
-    $('.nav-slider').slick({
+    $('.nav-slider_contacts').slick({
         centerMode: true,
         centerPadding: '0px',
         slidesToShow: 6,
         slidesToScroll: 1,
-        asNavFor: '.lead-slider',
+        asNavFor: '.lead-slider_contacts',
         focusOnSelect: true,
         infinite: true,
         prevArrow: '.prev-arrow',
@@ -34,13 +34,13 @@ $(document).ready(function () {
 
     // ########################################
 
-    initContactsPage();
+    // initContactsPage();
 
     checkInputValid();
 
     // ########################################
 
-    function initContactsPage() {
+    (function initContactsPage() {
         const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
 
         $('#send-question').attr('disabled', true);
@@ -60,7 +60,7 @@ $(document).ready(function () {
             $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
             $('.app-container').removeClass('blur-block');
         });
-    }
+    })();
 
     // ########################################
 

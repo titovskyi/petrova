@@ -13,7 +13,7 @@ $(document).ready(function () {
                 settings: {
                     slidesToShow: 1,
                     infinite: true,
-                    dots: true,
+                    dots: true
                 }
             }
         ]
@@ -43,12 +43,6 @@ $(document).ready(function () {
     if (hasElement) {
         initCounter(1000, '.count-num', '.statistics');
     }
-
-    // ########################################
-
-    initPopupListeners();
-
-    checkInputValid();
 
     // ########################################
 
@@ -135,41 +129,48 @@ $(document).ready(function () {
 
     // ########################################
 
-    function initPopupListeners() {
-        const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
-
+    // Candidate info popup init actions
+    (function () {
         $('#send-question').attr('disabled', true);
 
-        $('.open-popup-button').each(function () {
-            this.addEventListener('click', function () {
-                $('.app-container').addClass('blur-block');
-                $('.popup__wrapper').addClass('contacts-popup__wrapper_show');
+        $($('.open-vacancy-choose-button')[0]).on('click', function () {
+            $('.app-container').addClass('blur-block');
+            $('.vacancy__popup-overlay').addClass('show-overlay');
+            $('.popup__wrapper_vacancy').addClass('popup__wrapper_show');
 
-                inputArray.forEach((input) => {
-                    input.val('');
-                });
-
-                $('.popup-close__button').on('click', function () {
-                    resetForm(inputArray);
-
-                    $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
-                    $('.app-container').removeClass('blur-block');
-                });
-
-                if($('.button_add-file')) {
-
-                    const addFileButton = $('.button_add-file');
-                    const addFileInput = addFileButton.prev();
-
-                    addFileButton.on('click', function() {
-                        addFileInput.click();
-                    })
-                }
-            });
+            clearForm(true);
+            checkInfoPopupInputValid();
         });
-    }
 
-    function checkInputValid() {
+        if ($('.button_add-file')) {
+            const addFileButton = $('.button_add-file');
+            const addFileInput = addFileButton.prev();
+
+            addFileButton.on('click', function () {
+                addFileInput.click();
+            });
+        }
+        $('.vacancy__popup-overlay').on('click', function() {
+            if (confirm('You will lose your form data!')) {
+                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
+                $('.app-container').removeClass('blur-block');
+                $('.vacancy__popup-overlay').removeClass('show-overlay');
+            } else {
+                return false;
+            }
+        })
+        $('.popup-close__button').on('click', function () {
+            if (confirm('You will lose your form data!')) {
+                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
+                $('.app-container').removeClass('blur-block');
+                $('.vacancy__popup-overlay').removeClass('show-overlay');
+            } else {
+                return false;
+            }
+        });
+    })();
+
+    function checkInfoPopupInputValid() {
         const nameReg = /^[a-zA-Z\u0400-\u04FF\s]*$/;
         const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         const phoneReg = /^\+?3?8?(0\d{9})$/;
@@ -180,7 +181,7 @@ $(document).ready(function () {
         const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea'), $('#file-input')];
 
         for (let i = 0; inputArray.length > i; i++) {
-            inputArray[i].on('input', function () {
+            inputArray[i].on('blur', function () {
                 const inputValue = inputArray[i].val();
 
                 if (inputValue && regexpArray[i].test(inputValue)) {
@@ -189,23 +190,25 @@ $(document).ready(function () {
                     inputArray[i].parent().removeClass('valid').addClass('invalid');
                 }
 
-                checkFormValid(regexpArray, inputArray);
+                checkInfoFormValid(regexpArray, inputArray);
             });
         }
 
-        checkFormValid(regexpArray, inputArray);
+        checkInfoFormValid(regexpArray, inputArray);
     }
 
-    function checkFormValid(regexpArray, inputArray) {
+    function checkInfoFormValid(regexpArray, inputArray) {
+
+
         let validForm = false;
         const CVindex = inputArray.length - 1;
         const vacancyChoosed = !!Number($('#vacancy-select').val());
 
         validForm = regexpArray[CVindex].test(inputArray[CVindex].val());
 
-        if(validForm === false) {
+        if (validForm === false) {
             for (let i = 0; inputArray.length > i; i++) {
-                if(i != CVindex) {
+                if (i != CVindex) {
                     if (regexpArray[i].test(inputArray[i].val())) {
                         validForm = true;
                     } else {
@@ -217,12 +220,205 @@ $(document).ready(function () {
             }
         }
 
-
         if (validForm && vacancyChoosed) {
             $('#send-question').attr('disabled', false);
         } else {
             $('#send-question').attr('disabled', true);
         }
+    }
+
+    // ########################################
+
+    (function () {
+        $('.details-link').on('click', function () {
+            $('.app-container').addClass('blur-block');
+            $('.detailed-vacancy__popup-overlay').addClass('show-overlay');
+            $('.popup__wrapper_detailed-vacancy').addClass('popup__wrapper_show');
+            checkInfoPopupInputValid();
+        });
+
+        $('.popup-close__button_detailed-vacancy').on('click', function () {
+            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show');
+            $('.app-container').removeClass('blur-block');
+            $('.detailed-vacancy__popup-overlay').removeClass('show-overlay');
+        });
+
+        $('.detailed-vacancy__popup-overlay').on('click', function() {
+            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show');
+            $('.app-container').removeClass('blur-block');
+            $('.detailed-vacancy__popup-overlay').removeClass('show-overlay');
+        });
+
+        $('#detailed-vacancy-send-button').on('click', function () {
+            clearForm(true);
+
+            $('.popup__wrapper_vacancy').addClass('popup__wrapper_show');
+            $('.vacancy__popup-overlay').addClass('show-overlay');
+            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show');
+            $('.detailed-vacancy__popup-overlay').removeClass('show-overlay');
+        });
+    })();
+
+    // ########################################
+
+    // Contacts Page scripts
+
+    $('.lead-slider_contacts').slick({
+        centerMode: true,
+        centerPadding: '10%',
+        slidesToShow: 3,
+        infinite: true,
+        arrows: false,
+        focusOnSelect: true,
+        asNavFor: '.nav-slider_contacts'
+    });
+    $('.nav-slider_contacts').slick({
+        centerMode: true,
+        centerPadding: '0px',
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        asNavFor: '.lead-slider_contacts',
+        focusOnSelect: true,
+        infinite: true,
+        prevArrow: '.prev-arrow',
+        nextArrow: '.next-arrow'
+    });
+
+    $('.mobile-slider').slick({
+        dots: true,
+        arrows: false,
+        infinite: true,
+        appendDots: '.mobile-slider__dots',
+        adaptiveHeight: true
+    });
+
+    (function initContactsPage() {
+        const nameReg = /^[a-zA-Z\u0400-\u04FF\s]*$/;
+        const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        const phoneReg = /^\+?3?8?(0\d{9})$/;
+        const messageReg = /^.{1,2800}$/;
+
+        const regexpArray = [nameReg, emailReg, phoneReg, messageReg];
+        const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
+
+        $('#send-question').attr('disabled', true);
+        $('.open-popup-button').on('click', function () {
+            $('.app-container').addClass('blur-block');
+            $('.popup__wrapper').addClass('contacts-popup__wrapper_show');
+            $('.popup-overlay').addClass('show-overlay');
+
+            clearForm(false);
+            checkQuestionPopupInputValid(regexpArray, inputArray);
+        });
+
+        $('.popup-close__button')[0].addEventListener('click', function () {
+            resetForm(inputArray);
+            $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
+            $('.app-container').removeClass('blur-block');
+            $('.popup-overlay').removeClass('show-overlay');
+        });
+
+        $('.popup-overlay').on('click', function() {
+            if (confirm('You will lose your form data!')) {
+                $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
+                $('.app-container').removeClass('blur-block');
+                $('.popup-overlay').removeClass('show-overlay');
+            } else {
+                return false;
+            }
+        });
+    })();
+
+    function checkQuestionPopupInputValid(regexpArray, inputArray) {
+        for (let i = 0; inputArray.length > i; i++) {
+            inputArray[i].on('blur', function () {
+                const inputValue = inputArray[i].val();
+
+                if (inputValue && regexpArray[i].test(inputValue)) {
+                    inputArray[i].parent().removeClass('invalid').addClass('valid');
+                } else {
+                    inputArray[i].parent().removeClass('valid').addClass('invalid');
+                }
+
+                checkQuestionFormValid(regexpArray, inputArray);
+            });
+        }
+
+        checkQuestionFormValid(regexpArray, inputArray);
+    }
+
+    function checkQuestionFormValid(regexpArray, inputArray) {
+        let validForm = false;
+
+        if (validForm === false) {
+            for (let i = 0; inputArray.length > i; i++) {
+                if (regexpArray[i].test(inputArray[i].val())) {
+                    validForm = true;
+                } else {
+                    validForm = false;
+
+                    break;
+                }
+            }
+        }
+
+        if (validForm) {
+            $('#send-question').attr('disabled', false);
+        } else {
+            $('#send-question').attr('disabled', true);
+        }
+    }
+
+    // ########################################
+
+    // function initPopupListeners() {
+    //     const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
+    //
+    //     $('#send-question').attr('disabled', true);
+    //
+    //     $('.open-popup-button').each(function () {
+    //         this.addEventListener('click', function () {
+    //             $('.app-container').addClass('blur-block');
+    //             $('.popup__wrapper').addClass('contacts-popup__wrapper_show');
+    //
+    //             inputArray.forEach((input) => {
+    //                 input.val('');
+    //             });
+    //
+    //             $('.popup-close__button').on('click', function () {
+    //                 resetForm(inputArray);
+    //
+    //                 $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
+    //                 $('.app-container').removeClass('blur-block');
+    //             });
+    //
+    //             if($('.button_add-file')) {
+    //
+    //                 const addFileButton = $('.button_add-file');
+    //                 const addFileInput = addFileButton.prev();
+    //
+    //                 addFileButton.on('click', function() {
+    //                     addFileInput.click();
+    //                 })
+    //             }
+    //         });
+    //     });
+    // }
+
+    function clearForm(withFile) {
+        let inputArray = [];
+
+        if (withFile) {
+            inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea'), $('#file-input')];
+        } else {
+            inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea')];
+        }
+
+        inputArray.forEach((input) => {
+            input.val('');
+        });
+
+        resetForm(inputArray);
     }
 
     function resetForm(inputArray) {
@@ -236,13 +432,13 @@ $(document).ready(function () {
 
         $('#send-question').attr('disabled', true);
 
-        $('#vacancy-select').prop('selectedIndex',0);
+        $('#vacancy-select').prop('selectedIndex', 0);
     }
 
     // ########################################
 
     function trancateText() {
-        if(($('#vacancy-card-content__about').height() > 64)) {
+        if ($('#vacancy-card-content__about').height() > 66) {
             $('.vacancy-trancate-points').addClass('vacancy-trancate-points_show');
         }
     }
@@ -251,9 +447,7 @@ $(document).ready(function () {
 
     // Vacancy Select
 
-    customizeVacancySelect();
-
-    function customizeVacancySelect() {
+    (function () {
         var x, i, j, selElmnt, a, b, c;
         /* Look for any elements with the class "custom-select": */
         x = document.getElementsByClassName('vacancy-custom-select');
@@ -279,7 +473,6 @@ $(document).ready(function () {
                     s = this.parentNode.parentNode.getElementsByTagName('select')[0];
                     h = this.parentNode.previousSibling;
                     for (i = 0; i < s.length; i++) {
-
                         if (s.options[i].innerHTML === this.innerHTML) {
                             s.selectedIndex = i;
                             $(a).addClass('vacancy-select-selected_white');
@@ -297,82 +490,81 @@ $(document).ready(function () {
                         }
                     }
                     h.click();
-
                 });
                 b.appendChild(c);
             }
             x[i].appendChild(b);
 
             a.addEventListener('click', function (e) {
-
                 /* When the select box is clicked, close any other select boxes,
                 and open/close the current select box: */
                 e.stopPropagation();
                 closeAllSelect(this);
-                checkInputValid();
+                checkInfoPopupInputValid();
                 this.nextSibling.classList.toggle('vacancy-select-hide');
                 this.classList.toggle('vacancy-select-arrow-active');
             });
         }
-
-    }
+    })();
 
     // ########################################
 
-
-
     // Custom select
 
-    var x, i, j, selElmnt, a, b, c;
-    /* Look for any elements with the class "custom-select": */
-    x = document.getElementsByClassName('custom-select');
-    for (i = 0; i < x.length; i++) {
-        selElmnt = x[i].getElementsByTagName('select')[0];
-        /* For each element, create a new DIV that will act as the selected item: */
-        a = document.createElement('DIV');
-        a.setAttribute('class', 'select-selected');
-        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-        x[i].appendChild(a);
-        /* For each element, create a new DIV that will contain the option list: */
-        b = document.createElement('DIV');
-        b.setAttribute('class', 'select-items select-hide');
-        for (j = 1; j < selElmnt.length; j++) {
-            /* For each option in the original select element,
-            create a new DIV that will act as an option item: */
-            c = document.createElement('DIV');
-            c.innerHTML = selElmnt.options[j].innerHTML;
-            c.addEventListener('click', function (e) {
-                /* When an item is clicked, update the original select box,
-                and the selected item: */
-                var y, i, k, s, h;
-                s = this.parentNode.parentNode.getElementsByTagName('select')[0];
-                h = this.parentNode.previousSibling;
-                for (i = 0; i < s.length; i++) {
-                    if (s.options[i].innerHTML == this.innerHTML) {
-                        s.selectedIndex = i;
-                        h.innerHTML = this.innerHTML;
-                        y = this.parentNode.getElementsByClassName('same-as-selected');
-                        for (k = 0; k < y.length; k++) {
-                            y[k].removeAttribute('class');
+    (function () {
+        var x, i, j, selElmnt, a, b, c;
+        /* Look for any elements with the class "custom-select": */
+        x = document.getElementsByClassName('custom-select');
+        for (i = 0; i < x.length; i++) {
+            selElmnt = x[i].getElementsByTagName('select')[0];
+            /* For each element, create a new DIV that will act as the selected item: */
+            a = document.createElement('DIV');
+            a.setAttribute('class', 'select-selected');
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            /* For each element, create a new DIV that will contain the option list: */
+            b = document.createElement('DIV');
+            b.setAttribute('class', 'select-items select-hide');
+            for (j = 1; j < selElmnt.length; j++) {
+                /* For each option in the original select element,
+                create a new DIV that will act as an option item: */
+                c = document.createElement('DIV');
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener('click', function (e) {
+                    /* When an item is clicked, update the original select box,
+                    and the selected item: */
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName('select')[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName('same-as-selected');
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute('class');
+                            }
+                            this.setAttribute('class', 'same-as-selected');
+                            break;
                         }
-                        this.setAttribute('class', 'same-as-selected');
-                        break;
                     }
-                }
-                h.click();
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener('click', function (e) {
+                /* When the select box is clicked, close any other select boxes,
+                and open/close the current select box: */
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle('select-hide');
+                this.classList.toggle('select-arrow-active');
             });
-            b.appendChild(c);
         }
-        x[i].appendChild(b);
-        a.addEventListener('click', function (e) {
-            /* When the select box is clicked, close any other select boxes,
-            and open/close the current select box: */
-            e.stopPropagation();
-            closeAllSelect(this);
-            this.nextSibling.classList.toggle('select-hide');
-            this.classList.toggle('select-arrow-active');
-        });
-    }
+    })();
+
+    // ########################################
 
     function closeAllSelect(elmnt) {
         /* A function that will close all select boxes in the document,
