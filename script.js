@@ -6,6 +6,7 @@ $(document).ready(function () {
         infinite: true,
         arrows: false,
         asNavFor: '.nav-slider',
+        focusOnSelect: true,
         responsive: [
             {
                 breakpoint: 767,

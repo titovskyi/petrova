@@ -333,6 +333,13 @@ body {
     text-transform: uppercase;
     transition: all 0.3s;
     padding: 14px 32px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .button_add-file {
@@ -398,6 +405,13 @@ body {
     font-weight: 700;
     line-height: 43px;
     color: #ffffff;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .app-title_position {
@@ -426,6 +440,13 @@ body {
     font-size: 18px;
     line-height: 23px;
     margin-bottom: 12px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .text-description__item_big {
@@ -583,6 +604,12 @@ body {
 
 .counter-item {
     margin-bottom: 15px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .statistics {
@@ -607,17 +634,22 @@ body {
 }
 
 .cooperation-list {
-    height: 100px;
+    height: 102px;
     width: 100%;
 }
 
 .cooperation-list__link {
     cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .cooperation-list__magento {
     background: url(../img/magento.png) no-repeat;
     transition: background 0.2s;
+    width: 100%;
+
     background-size: contain;
 }
 
@@ -640,6 +672,7 @@ body {
 .cooperation-list__amazon {
     background: url(../img/amazon.png) no-repeat;
     transition: background 0.2s;
+
     background-size: contain;
 }
 
@@ -651,12 +684,17 @@ body {
 .cooperation-list__walmart {
     background: url(../img/walmart.png) no-repeat;
     transition: background 0.2s;
+
     background-size: contain;
 }
 
 .cooperation-list__walmart:hover {
     background: url('../img/walmart-ink.png') no-repeat;
     background-size: contain;
+}
+
+.partnership-container {
+
 }
 
 .vacancies-bg {
@@ -790,8 +828,64 @@ body {
     font-size: 17px;
     line-height: 23px;
     letter-spacing: -0.5px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-decoration: none !important;
+    max-height: 68px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
+
+
+
+
+
+/*!* styles for '...' *!*/
+/*.vacancies-content__text {*/
+/*    !* hide text if it more than N lines  *!*/
+/*    overflow: hidden;*/
+/*    !* for set '...' in absolute position *!*/
+/*    position: relative;*/
+/*    !* use this value to count block height *!*/
+/*    line-height: 1.2em;*/
+/*    !* max-height = line-height (1.2) * lines max number (3) *!*/
+/*    max-height: 3.6em;*/
+/*    !* fix problem when last visible word doesn't adjoin right side  *!*/
+/*    text-align: justify;*/
+/*    !* place for '...' *!*/
+/*    margin-right: -1em;*/
+/*    padding-right: 15px;*/
+/*}*/
+/*!* create the ... *!*/
+/*.vacancies-content__text:before {*/
+/*    content: '...';*/
+/*    position: absolute;*/
+/*    right: 0;*/
+/*    bottom: 2px;*/
+/*    background: #0d0d0d;*/
+/*}*/
+/*!* hide ... if we have text, which is less than or equal to max lines *!*/
+/*.vacancies-content__text:after {*/
+/*    !* points in the end *!*/
+/*    content: '';*/
+/*    !* absolute position *!*/
+/*    position: absolute;*/
+/*    !* set position to right bottom corner of text *!*/
+/*    right: 0;*/
+/*    !* set width and height *!*/
+/*    width: 1em;*/
+/*    height: 1em;*/
+/*    margin-top: 0.2em;*/
+/*    !* bg color = bg color under block *!*/
+/*    background: #0d0d0d;*/
+/*}*/
+
+
+
+
+
+
+
 
 .vacancies-tags {
     padding: 0 15px 0 0;
@@ -1188,6 +1282,8 @@ body {
     overflow: hidden;
     margin: 0;
     tab-size: 4;
+    margin-top: 20px;
+    margin-left: 50px;
 }
 
 .code-wrapper pre {
@@ -2436,6 +2532,44 @@ body {
     letter-spacing: 0;
 }
 
+.not-found {
+    margin-top: 50px;
+}
+
+.not-found__title {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 75px;
+    letter-spacing: -1px;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.not-found__description {
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.not-found__clear-search-btn {
+    border: none;
+    outline: none;
+    text-decoration: none !important;
+    background: transparent;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 24px;
+    text-align: center;
+    color: #FDE724 !important;
+    margin-top: 25px;
+}
+
 .form-wrapper {
     width: 437px;
     background: #000;
@@ -2902,8 +3036,9 @@ input:-webkit-autofill:active {
 @media screen and (max-width: 767px) {
     .code-wrapper {
         color: #ffffff;
-        font-size: 16px;
-        line-height: 23px;
+        font-size: 14px;
+        line-height: 21px;
+        margin-left: 0;
     }
 
     .vacancies-slider {
@@ -2926,6 +3061,11 @@ input:-webkit-autofill:active {
         font-size: 14px;
         line-height: 21px;
         /*font-family: inherit;*/
+    }
+
+    .vacancies-content__text {
+        max-height: 100px;
+        overflow: hidden;
     }
 }
 
