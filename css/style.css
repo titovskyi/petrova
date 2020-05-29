@@ -1264,7 +1264,7 @@ body {
 /*}*/
 
 /* The container must be positioned relative: */
-.custom-select {
+.custom-select, .it-start-select {
     position: relative;
     padding: 0;
     border: none;
@@ -1282,7 +1282,7 @@ body {
     /*height: 52px;*/
 }
 
-.custom-select select {
+.custom-select select, .it-start-select select {
     display: none; /*hide original SELECT element: */
 }
 
@@ -2688,7 +2688,8 @@ input:-webkit-autofill:active {
 }
 
 .popup-close__button,
-.popup-close__button_detailed-vacancy {
+.popup-close__button_detailed-vacancy,
+.popup-close__button_it-start {
     position: absolute;
     top: 17px;
     right: 17px;
@@ -2875,6 +2876,11 @@ input:-webkit-autofill:active {
     .vacancies-card__footer {
         margin-top: 10px;
     }
+
+    .address-card {
+        top: 250px;
+        right: 115px;
+    }
 }
 
 @media screen and (max-width: 1023px) {
@@ -2925,6 +2931,44 @@ input:-webkit-autofill:active {
 
     .lead-slider {
         margin-bottom: 80px !important;
+    }
+
+    .contacts-chooser {
+        height: 335px;
+    }
+
+    .address-card {
+        right: 135px;
+        top: 180px;
+        width: 130px;
+        padding: 0;
+    }
+
+    .address-card-header__line {
+        box-shadow: 0 0 35px rgba(253, 231, 36, 0);
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 6px;
+        width: 100%;
+        transition: all 0.2s;
+    }
+
+    .address-card-header__title {
+        padding: 12px 12px 8px 12px;
+    }
+
+    .address-card-header__text {
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0 0 0 6px;
+    }
+
+    .address-card-content__text {
+        color: #ffffff;
+        font-size: 11px;
+        line-height: 130%;
     }
 }
 
@@ -3072,6 +3116,44 @@ input:-webkit-autofill:active {
     .app-title__img {
         height: 60px;
     }
+
+    .container_width-100 {
+        min-width: 100%;
+    }
+
+    .contacts-chooser {
+        display: none;
+    }
+
+    .button-mobile_long {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .app-title {
+        font-family: 'Rubik', sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #FFFFFF;
+    }
+
+    .mobile-contacts {
+        display: flex;
+    }
+
+    .address-card {
+        right: 65px;
+        top: 120px;
+    }
+
+    .desktop-contacts-slider {
+        display: none;
+    }
+
+    .mobile-slider-wrapper {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -3097,6 +3179,100 @@ input:-webkit-autofill:active {
 
     .vacancy-trancate-points {
         bottom: -3px;
+    }
+
+    .blog-card:first-child {
+        margin-top: 145px;
+    }
+
+    .filter {
+        display: none;
+    }
+
+    .filter-mobile {
+        display: block;
+    }
+
+    .blog-card-slider-controls {
+        display: none;
+    }
+
+    .blog-card {
+        width: auto;
+        padding: 0 13px 31px 13px;
+    }
+
+    .blog-card__header {
+        margin: 0 10px;
+    }
+
+    .blog-card__logo {
+        width: 50px;
+    }
+
+    .blog-card__date {
+        width: auto;
+    }
+
+    .blog-card__action_hashtag {
+        font-size: 16px;
+    }
+
+    .blog-card__info {
+        margin: 27px 10px 10px 10px;
+    }
+
+    .blog-card__info-wrapper {
+        padding: 0 3px;
+    }
+
+    .blog-card__info_header {
+        font-size: 20px;
+        padding: 0 3px;
+    }
+
+    .blog-card__info_text {
+        font-size: 18px;
+        line-height: 140%;
+    }
+
+    .more {
+        bottom: -3px;
+        width: 80%;
+    }
+
+    .blog-card__tags {
+        margin: 0 13px 0 13px;
+    }
+
+    .map {
+        display: none;
+    }
+
+    .mobile-map {
+        display: block;
+        margin: 57px auto 0 auto;
+    }
+
+    /*contacts 576*/
+
+    .address-card {
+        right: 20%;
+        top: 85px;
+    }
+
+    .contacts-popup__wrapper {
+        width: 292px;
+    }
+
+    /*it-start 576*/
+
+    .it-start_desktop-vacancy {
+        display: none;
+    }
+
+    .it-start_mobile-vacancy {
+        display: block;
     }
 }
 
@@ -3139,11 +3315,29 @@ input:-webkit-autofill:active {
     .popup-detailed-vacancy__text {
         font-size: 16px;
     }
+
+    .popup__wrapper_vacancy {
+        width: 100%;
+    }
+
+    .vacancy-card {
+        width: 100%;
+    }
+
+    .popup__wrapper {
+        top:0;
+        left: 0;
+
+    }
 }
 
 @media screen and (max-width: 341px) {
     .mobile-map {
         width: 100%;
+    }
+
+    .mobile-contact {
+        margin: 0 5px;
     }
 }
 

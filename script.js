@@ -230,7 +230,7 @@ $(document).ready(function () {
     // ########################################
 
     (function () {
-        $('.details-link').on('click', function () {
+        $('.open-details-popup').on('click', function () {
             $('.app-container').addClass('blur-block');
             $('.detailed-vacancy__popup-overlay').addClass('show-overlay');
             $('.popup__wrapper_detailed-vacancy').addClass('popup__wrapper_show');
@@ -311,12 +311,13 @@ $(document).ready(function () {
             checkQuestionPopupInputValid(regexpArray, inputArray);
         });
 
-        $('.popup-close__button')[0].addEventListener('click', function () {
-            resetForm(inputArray);
-            $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
-            $('.app-container').removeClass('blur-block');
-            $('.popup-overlay').removeClass('show-overlay');
-        });
+            $('.popup-close__button').on('click', function () {
+                resetForm(inputArray);
+                $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
+                $('.app-container').removeClass('blur-block');
+                $('.popup-overlay').removeClass('show-overlay');
+            });
+
 
         $('.popup-overlay').on('click', function() {
             if (confirm('You will lose your form data!')) {

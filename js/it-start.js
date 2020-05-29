@@ -68,6 +68,7 @@ $(document).ready(function () {
         $('#send-question').attr('disabled', true);
 
         $('.it-start__button').on('click', function () {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
             $('.app-container').addClass('blur-block');
             $('.it-start__popup-overlay').addClass('show-overlay');
             $('.popup__wrapper_vacancy').addClass('popup__wrapper_show');
@@ -95,7 +96,7 @@ $(document).ready(function () {
             }
         });
 
-        $('.popup-close__button').on('click', function () {
+        $('.popup-close__button_it-start').on('click', function () {
             if (confirm('You will lose your form data!')) {
                 $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
                 $('.app-container').removeClass('blur-block');
@@ -192,64 +193,67 @@ $(document).ready(function () {
 
 
     // Custom select
-    // TODO merge with vacancies select & popups
 
-    var x, i, j, selElmnt, a, b, c;
-    /* Look for any elements with the class "custom-select": */
-    x = document.getElementsByClassName('custom-select');
-    for (i = 0; i < x.length; i++) {
-        selElmnt = x[i].getElementsByTagName('select')[0];
-        /* For each element, create a new DIV that will act as the selected item: */
-        a = document.createElement('DIV');
-        a.setAttribute('class', 'select-selected');
-        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-        x[i].appendChild(a);
-        /* For each element, create a new DIV that will contain the option list: */
-        b = document.createElement('DIV');
-        b.setAttribute('class', 'select-items select-hide');
-        for (j = 1; j < selElmnt.length; j++) {
-            /* For each option in the original select element,
-            create a new DIV that will act as an option item: */
-            c = document.createElement('DIV');
-            c.innerHTML = selElmnt.options[j].innerHTML;
-            c.addEventListener('click', function (e) {
-                /* When an item is clicked, update the original select box,
-                and the selected item: */
-                var y, i, k, s, h;
-                s = this.parentNode.parentNode.getElementsByTagName('select')[0];
-                h = this.parentNode.previousSibling;
-                for (i = 0; i < s.length; i++) {
-                    if (s.options[i].innerHTML == this.innerHTML) {
-                        s.selectedIndex = i;
-                        h.innerHTML = this.innerHTML;
-                        y = this.parentNode.getElementsByClassName('same-as-selected');
-                        for (k = 0; k < y.length; k++) {
-                            y[k].removeAttribute('class');
+    (function () {
+        var x, i, j, selElmnt, a, b, c;
+        /* Look for any elements with the class "custom-select": */
+        x = document.getElementsByClassName('it-start-select');
+        for (i = 0; i < x.length; i++) {
+            selElmnt = x[i].getElementsByTagName('select')[0];
+            /* For each element, create a new DIV that will act as the selected item: */
+            a = document.createElement('DIV');
+            a.setAttribute('class', 'select-selected');
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            /* For each element, create a new DIV that will contain the option list: */
+            b = document.createElement('DIV');
+            b.setAttribute('class', 'select-items select-hide');
+            for (j = 1; j < selElmnt.length; j++) {
+                /* For each option in the original select element,
+                create a new DIV that will act as an option item: */
+                c = document.createElement('DIV');
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener('click', function (e) {
+                    /* When an item is clicked, update the original select box,
+                    and the selected item: */
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName('select')[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName('same-as-selected');
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute('class');
 
-                            $('.mobile-position-card').removeClass('show-mobile-element');
-                            $('.it-start__button_mobile').removeClass('show-mobile-element');
+                                $('.mobile-position-card').removeClass('show-mobile-element');
+                                $('.it-start__button_mobile').removeClass('show-mobile-element');
+                            }
+
+                            this.setAttribute('class', 'same-as-selected');
+                            $('.mobile-position-card').addClass('show-mobile-element');
+                            $('.it-start__button_mobile').addClass('show-mobile-element');
+                            $('.it-start__button_mobile').attr('disabled', false);
+                            break;
                         }
-                        this.setAttribute('class', 'same-as-selected');
-                        $('.mobile-position-card').addClass('show-mobile-element');
-                        $('.it-start__button_mobile').addClass('show-mobile-element');
-                        $('.it-start__button_mobile').attr('disabled', false);
-                        break;
                     }
-                }
-                h.click();
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener('click', function (e) {
+                /* When the select box is clicked, close any other select boxes,
+                and open/close the current select box: */
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle('select-hide');
+                this.classList.toggle('select-arrow-active');
             });
-            b.appendChild(c);
         }
-        x[i].appendChild(b);
-        a.addEventListener('click', function (e) {
-            /* When the select box is clicked, close any other select boxes,
-            and open/close the current select box: */
-            e.stopPropagation();
-            closeAllSelect(this);
-            this.nextSibling.classList.toggle('select-hide');
-            this.classList.toggle('select-arrow-active');
-        });
-    }
+    })();
+
 
     function closeAllSelect(elmnt) {
         /* A function that will close all select boxes in the document,

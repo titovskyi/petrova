@@ -11,7 +11,6 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/responsive.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet"
@@ -40,7 +39,7 @@
                 <div class="container">
                     <header class="row">
                         <h1 class="hide-mobile-element logo logo__wrapper col-2">
-                            <a href="#" class="logo__link">
+                            <a href="./index.html" class="logo__link">
                                 <img src="img/app-logo.svg" class="logo__img" alt="app-logo" />
                             </a>
                         </h1>
@@ -330,7 +329,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 it-start__action-wrapper">
-                                <a class="it-start__button" href="#">Старт</a>
+                                <button class="it-start__button" href="#">Старт</button>
                                 <p class="button__hint">Выбери направление в начале страницы</p>
                             </div>
                         </div>
@@ -338,7 +337,7 @@
                 </section>
                 <div class="it-start_mobile-vacancy">
                     <div class="form-group">
-                        <div class="custom-select">
+                        <div class="it-start-select">
                             <select>
                                 <option value="0">Выберите направление</option>
                                 <option value="1">Trainee PHP Developer</option>
@@ -597,7 +596,7 @@
 
         <div class="it-start__popup-overlay"></div>
         <div class="popup__wrapper popup__wrapper_vacancy">
-            <img class="popup-close__button" src="./img/popup-close.svg" alt="" />
+            <img class="popup-close__button_it-start" src="./img/popup-close.svg" alt="" />
             <div class="vacancy-card active">
                 <div class="vacancy-card-content">
                     <div class="vacancy-card-content__about-wrapper vacancy-card-content__about-wrapper_it-start">
@@ -678,6 +677,7 @@
         <script type="text/javascript" src="slick/slick.min.js"></script>
         <script src="./particles.js-master/particles.js"></script>
         <script type="text/javascript" src="./js/it-start.js"></script>
+        <script type="text/javascript" src="./script.js"></script>
         <script type="text/javascript" src="./js/md-rocket.js"></script>
     </body>
 </html>
