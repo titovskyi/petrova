@@ -333,6 +333,8 @@ body {
     text-transform: uppercase;
     transition: all 0.3s;
     padding: 14px 32px;
+    background: transparent;
+
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -729,6 +731,10 @@ body {
 .vacancies-list__item {
     margin-bottom: 30px;
     cursor: default;
+}
+
+.vacancies-list div:last-child .vacancies-list__item {
+    margin-bottom: 0;
 }
 
 .vacancies-card {
@@ -3051,7 +3057,7 @@ input:-webkit-autofill:active {
 
     .vacancies-card {
         border-left: 8px solid #fde724 !important;
-        padding: 13px 15px 13px 15px;
+        padding: 20px 15px 18px 15px;
     }
 
     .vacancies-card__title {
@@ -3114,6 +3120,10 @@ input:-webkit-autofill:active {
         background: #fde724;
     }
 
+    .lead-slider {
+        margin-bottom: 43px !important;
+    }
+
     .app-title__img {
         height: 60px;
     }
@@ -3154,6 +3164,11 @@ input:-webkit-autofill:active {
 
     .mobile-slider-wrapper {
         display: block;
+    }
+
+    .product-cart-content__text {
+        text-align: left;
+        text-align: left;
     }
 }
 
@@ -3380,6 +3395,22 @@ input:-webkit-autofill:active {
     }
     .mobile-map {
         width: 100%;
+    }
+
+    .vacancies-list div:last-child .vacancies-list__item {
+        margin-bottom: 30px;
+    }
+
+    .vacancies-list div:last-child .vacancies-list__item:last-child {
+        margin-bottom: 0;
+    }
+
+    .vacancies-filter .section-wrapper {
+        padding-bottom: 10px;
+    }
+
+    .button__wrapper {
+        margin: 35px auto 0;
     }
 }
 

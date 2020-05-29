@@ -73,14 +73,14 @@ let typedArr = [{ element: $('.typed-slide-1'),
 
         typedElement.typed({
             strings: config.data,
-            typeSpeed: 50,
+            typeSpeed: 35,
             startDelay: 0,
             callback: function () {
                 $(typedElement).html(parseJsonToHtml(typedElement.text()));
 
                 interval = setTimeout(function() {
                     vacSlide.slick('slickNext');
-                }, 3000);
+                }, 2600);
             }
         });
     }
