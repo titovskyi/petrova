@@ -11,6 +11,7 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="./custom-scrollbar/jquery.mCustomScrollbar.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet"
@@ -24,7 +25,7 @@
         <link rel="stylesheet" type="text/css" href="slick/slick.css" />
     </head>
     <body>
-        <div class="app-container">
+        <div class="app-container mCustomScrollbar">
             <div class="header-position w-100">
                 <div class="container">
                     <header class="row">
@@ -844,7 +845,7 @@
         </div>
 
         <div class="vacancy__popup-overlay"></div>
-        <div class="popup__wrapper popup__wrapper_vacancy">
+        <div class="popup__wrapper popup__wrapper_vacancy mCustomScrollbar">
             <img class="popup-close__button" src="./img/popup-close.svg" alt="" />
             <div class="vacancy-card">
                 <div class="form-group mb-0">
@@ -937,7 +938,7 @@
         </div>
 
         <div class="detailed-vacancy__popup-overlay"></div>
-        <div class="popup__wrapper popup__wrapper_detailed-vacancy">
+        <div class="popup__wrapper popup__wrapper_detailed-vacancy mCustomScrollbar">
             <img class="popup-close__button_detailed-vacancy" src="./img/popup-close.svg" alt="" />
             <ul class="project-list project-list_vacancy-popup d-flex flex-wrap">
                 <li class="project-list__item project-list__item_first">
@@ -1011,6 +1012,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"
         ></script>
+        <script src="./custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="slick/slick.min.js"></script>
         <script src="./particles.js-master/particles.js"></script>
         <script src="./js/typed.js"></script>

@@ -39,6 +39,7 @@ html,
 body {
     height: 100%;
 }
+
 body {
     line-height: 1;
 }
@@ -72,6 +73,14 @@ body {
     background-color: #000;
     font-family: 'Rubik', sans-serif;
     color: #fff;
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+    display: none;
+}
+
+.app-container {
+    height: 100%;
 }
 
 .particles-js {
@@ -2703,7 +2712,7 @@ input:-webkit-autofill:active  {
     box-shadow: 4px 4px 28px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     width: 100%;
-    height: 155px;
+    height: 500px;
     padding: 15px 17px;
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
@@ -2807,23 +2816,6 @@ input:-webkit-autofill:active  {
     color: #ffffff;
     background-color: #272727;
 }
-
-/*.nano {background:#bba;width:500px;height:500px; }*/
-/*.nano .content {padding:10px; }*/
-/*.nano .pane   {background:#888; }*/
-/*.nano .slider {background:#111; }*/
-
-
-/*TEXTAREA SCROLLBAR*/
-/*::-webkit-scrollbar {*/
-/*    width: 7px;*/
-/*    height: 0;*/
-/*}*/
-
-/*::-webkit-scrollbar-thumb:vertical {*/
-/*    background: #303030;*/
-/*    border-radius: 4px;*/
-/*}*/
 
 /* ALL MEDIA */
 

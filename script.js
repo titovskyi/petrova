@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    let initialItems;
+    let containerPosition;
+    let windowHeight;
+    let isRunCounter;
+    let options;
+
     $('.lead-slider').slick({
         centerMode: true,
         centerPadding: '20%',
@@ -104,36 +110,76 @@ $(document).ready(function () {
     }
 
     function initCounter(interval, items, container) {
-        let initialItems = initItems(items);
-        let containerPosition = $(container).offset().top;
-        let windowHeight = $(window).height() - 100;
-        let isRunCounter = false;
-        let options = getCurrentIntervalOptions(initialItems, interval);
+        initialItems = initItems(items);
+        containerPosition = $(container).offset().top;
+        windowHeight = $(window).height() - 100;
+        isRunCounter = false;
+        options = getCurrentIntervalOptions(initialItems, interval);
 
-        $(window).on('scroll', function () {
-            if (isRunCounter) {
-                return;
-            }
-
-            let scroll = $(window).scrollTop();
-
-            if (scroll + windowHeight >= containerPosition) {
-                runCounter(initialItems, options);
-
-                isRunCounter = true;
-
-                $(window).off('scroll');
-            }
-        });
+        // $(window).on('scroll', function () {
+        //     if (isRunCounter) {
+        //         return;
+        //     }
+        //     console.log(windowHeight);
+        //     let scroll = $(window).scrollTop();
+        //
+        //     console.log($(window).scrollTop());
+        //
+        //     if (scroll + windowHeight >= containerPosition) {
+        //         runCounter(initialItems, options);
+        //
+        //         isRunCounter = true;
+        //
+        //         $(window).off('scroll');
+        //     }
+        // });
     }
 
     // ########################################
+    $('.app-container').mCustomScrollbar({
+        theme: 'minimal',
+        mouseWheelPixels: 200,
+        scrollInertia: 1000,
+        setHeight: false,
+        callbacks: {
+            whileScrolling: function () {
+                if($('.statistics').offset()) {
+                    if (isRunCounter) {
+                        return;
+                    }
 
-    // $('.app-container').slimScroll({
-    //     height: '100%'
-    //
-    // });
+                    let scroll = $(window).scrollTop();
 
+                    if (scroll + windowHeight >= $('.statistics').offset().top) {
+                        runCounter(initialItems, options);
+
+                        isRunCounter = true;
+
+                        $(window).off('scroll');
+                    }
+                }
+
+            }
+        }
+    });
+
+    if($('.popup__wrapper_vacancy')) {
+        $('.popup__wrapper_vacancy').mCustomScrollbar({
+            theme: 'minimal',
+        })
+    }
+
+    if($('.popup__wrapper_detailed-vacancy')) {
+        $('.popup__wrapper_detailed-vacancy').mCustomScrollbar({
+            theme: 'minimal',
+        })
+    }
+
+    if($('.popup__wrapper_contacts')) {
+        $('.popup__wrapper_contacts').mCustomScrollbar({
+            theme: 'minimal',
+        })
+    }
 
     // Candidate info popup init actions
     (function () {
@@ -144,7 +190,6 @@ $(document).ready(function () {
 
             if ($('.popup__wrapper_vacancy').height() > $(window).height()) {
                 $('.popup__wrapper_vacancy').addClass('scrollable-popup');
-                $('.vacancy-card').addClass('vacancy-card_border-null')
             } else {
                 $('.popup__wrapper_vacancy').removeClass('scrollable-popup');
             }
@@ -176,7 +221,6 @@ $(document).ready(function () {
         $('.vacancy__popup-overlay').on('click', function () {
             $('body').removeClass('body_overflow-hidden');
             $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show scrollable-popup');
-            $('.vacancy-card').removeClass('vacancy-card_border-null')
 
             $('.app-container').removeClass('blur-block');
             $('.vacancy__popup-overlay').removeClass('show-overlay');
@@ -185,7 +229,6 @@ $(document).ready(function () {
         $('.popup-close__button').on('click', function () {
             $('body').removeClass('body_overflow-hidden');
             $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show scrollable-popup');
-            $('.vacancy-card').removeClass('vacancy-card_border-null')
 
             $('.app-container').removeClass('blur-block');
             $('.vacancy__popup-overlay').removeClass('show-overlay');
@@ -275,7 +318,6 @@ $(document).ready(function () {
             $('.app-container').removeClass('blur-block');
             $('.detailed-vacancy__popup-overlay').removeClass('show-overlay');
             document.getElementsByClassName('popup__wrapper_detailed-vacancy')[0].scrollTop = 0;
-
         });
 
         $('.detailed-vacancy__popup-overlay').on('click', function () {
@@ -289,7 +331,6 @@ $(document).ready(function () {
         $('#detailed-vacancy-send-button').on('click', function () {
             if ($('.popup__wrapper_vacancy').height() > $(window).height()) {
                 $('.popup__wrapper_vacancy').addClass('scrollable-popup');
-                $('.vacancy-card').addClass('vacancy-card_border-null')
             } else {
                 $('.popup__wrapper_vacancy').removeClass('scrollable-popup');
             }

@@ -11,6 +11,8 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="./custom-scrollbar/jquery.mCustomScrollbar.css" />
+
         <link
             href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet"
@@ -23,17 +25,17 @@
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
         <link rel="stylesheet" type="text/css" href="slick/slick.css" />
 
-        <link rel="stylesheet" href="css/md-rocket.css">
+        <link rel="stylesheet" href="css/md-rocket.css" />
     </head>
     <body>
+
+    <div class="app-container mCustomScrollbar">
         <div class="md-rocket">
             <div class="md-rocket-container">
                 <div class="rocket-animate-fire"></div>
                 <div class="rocket-base"></div>
             </div>
         </div>
-
-        <div class="app-container">
         <div class="container-fluid">
             <div class="header-position w-100">
                 <div class="container">
@@ -91,7 +93,7 @@
                             </a>
                         </div>
 
-                        <nav class="mobile-menu show-mobile-element navbar navbar-dark  indigo darken-2">
+                        <nav class="mobile-menu show-mobile-element navbar navbar-dark indigo darken-2">
                             <div class="mobile-menu-top d-flex justify-content-between">
                                 <h1 class="logo logo__wrapper">
                                     <a href="./index.html" class="logo__link">
@@ -117,13 +119,20 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <button class="navbar-toggler mobile-menu-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent22" aria-controls="navbarSupportedContent22" aria-expanded="false" aria-label="Toggle navigation">
+                                <button
+                                        class="navbar-toggler mobile-menu-button"
+                                        type="button"
+                                        data-toggle="collapse"
+                                        data-target="#navbarSupportedContent22"
+                                        aria-controls="navbarSupportedContent22"
+                                        aria-expanded="false"
+                                        aria-label="Toggle navigation"
+                                >
                                     <div class="mobile-animated-icon"><span></span><span></span><span></span></div>
                                 </button>
                             </div>
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent22">
-
                                 <ul class="nav-list d-flex">
                                     <li class="nav-list__item d-flex">
                                         <a href="./vacancies.html" class="nav-list__link">
@@ -148,7 +157,6 @@
                                 </ul>
                             </div>
                         </nav>
-
                     </header>
                 </div>
             </div>
@@ -195,14 +203,24 @@
                                         <div class="position-card__content">
                                             <p class="position-card__content-header">Must have:</p>
                                             <ul class="position-card__content-list">
-                                                <li class="position-cart__content-list-item"><span>&#x25CF;</span>уверенные знания PHP, OOP</li>
-                                                <li class="position-cart__content-list-item"><span>&#x25CF;</span>умение работать с SQL, MySQL</li>
-                                                <li class="position-cart__content-list-item"><span>&#x25CF;</span>HTML, CSS, JavaScript</li>
+                                                <li class="position-cart__content-list-item">
+                                                    <span>&#x25CF;</span>уверенные знания PHP, OOP
+                                                </li>
+                                                <li class="position-cart__content-list-item">
+                                                    <span>&#x25CF;</span>умение работать с SQL, MySQL
+                                                </li>
+                                                <li class="position-cart__content-list-item">
+                                                    <span>&#x25CF;</span>HTML, CSS, JavaScript
+                                                </li>
                                                 <li class="position-cart__content-list-item">
                                                     <span>&#x25CF;</span>понимание принципа работы SVN/Git
                                                 </li>
-                                                <li class="position-cart__content-list-item"><span>&#x25CF;</span>любой опыт разработки</li>
-                                                <li class="position-cart__content-list-item"><span>&#x25CF;</span>English (pre-intermediate+)</li>
+                                                <li class="position-cart__content-list-item">
+                                                    <span>&#x25CF;</span>любой опыт разработки
+                                                </li>
+                                                <li class="position-cart__content-list-item">
+                                                    <span>&#x25CF;</span>English (pre-intermediate+)
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -217,8 +235,12 @@
                                         <div class="position-card__content">
                                             <p class="position-card__content-header">Must have:</p>
                                             <ul class="position-card__content-list">
-                                                <li class="position-cart__content-list-item"><span>&#x25CF;</span>English (intermediate+)</li>
-                                                <li class="position-cart__content-list-item"><span>&#x25CF;</span>аналитические навыки</li>
+                                                <li class="position-cart__content-list-item">
+                                                    <span>&#x25CF;</span>English (intermediate+)
+                                                </li>
+                                                <li class="position-cart__content-list-item">
+                                                    <span>&#x25CF;</span>аналитические навыки
+                                                </li>
                                                 <li class="position-cart__content-list-item">
                                                     <span>&#x25CF;</span>общее понимание принципа работы web-приложений
                                                 </li>
@@ -302,8 +324,8 @@
                                             <p class="position-card__content-header">Expected Result:</p>
                                             <p class="position-card__content-text">
                                                 После изучения проекта начнется пошаговое внедрение в рабочий процесс. Ты сможешь начать
-                                                реализовывать различные задачи, постепенно повышая уровень их сложности, разобраться в сложных
-                                                архитектурных решениях и внести свой вклад в создание и развитие проекта!
+                                                реализовывать различные задачи, постепенно повышая уровень их сложности, разобраться в
+                                                сложных архитектурных решениях и внести свой вклад в создание и развитие проекта!
                                             </p>
                                         </div>
                                     </div>
@@ -318,9 +340,10 @@
                                         <div class="position-card__content">
                                             <p class="position-card__content-header">Expected Result:</p>
                                             <p class="position-card__content-text">
-                                                После изучения проекта начнется постепенное внедрение в рабочий процесс. Ты сможешь помогать
-                                                клиентам со всего мира искать решения для проблем разной сложности, практиковать английский,
-                                                расширить свой IT background, и внести свой вклад в улучшение и развитие проекта!
+                                                После изучения проекта начнется постепенное внедрение в рабочий процесс. Ты сможешь
+                                                помогать клиентам со всего мира искать решения для проблем разной сложности,
+                                                практиковать английский, расширить свой IT background, и внести свой вклад в улучшение и
+                                                развитие проекта!
                                             </p>
                                         </div>
                                     </div>
@@ -378,9 +401,9 @@
                         </ul>
                         <p class="mobile-position-card__title">Expected Result:</p>
                         <p class="mobile-position-card__content-text">
-                            После изучения проекта начнется пошаговое внедрение в рабочий процесс. Ты сможешь начать
-                            реализовывать различные задачи, постепенно повышая уровень их сложности, разобраться в сложных
-                            архитектурных решениях и внести свой вклад в создание и развитие проекта!
+                            После изучения проекта начнется пошаговое внедрение в рабочий процесс. Ты сможешь начать реализовывать
+                            различные задачи, постепенно повышая уровень их сложности, разобраться в сложных архитектурных решениях и
+                            внести свой вклад в создание и развитие проекта!
                         </p>
                     </div>
                     <div class="it-start__button-wrapper_mobile">
@@ -404,8 +427,8 @@
                                     />
                                 </svg>
                                 <span class="link-inner">
-                                    +38 098 608 80 08
-                                </span>
+                                        +38 098 608 80 08
+                                    </span>
                             </a>
                         </li>
                         <li class="left-list__item">
@@ -418,14 +441,14 @@
                                     />
                                 </svg>
                                 <span class="link-inner">
-                                    hr@m2epro.com
-                                </span>
+                                        hr@m2epro.com
+                                    </span>
                             </a>
                         </li>
                     </ul>
                     <span class="footer-copyright hide-tablet-element">
-                        М2Е &copy; All rights reserved
-                    </span>
+                            М2Е &copy; All rights reserved
+                        </span>
                     <ul class="social-list d-flex hide-tablet-element">
                         <li class="social-list__item">
                             <a href="#" class="social-list__link">
@@ -585,17 +608,17 @@
                                 </li>
                             </ul>
                             <span class="footer-copyright text-center w-100">
-                        М2Е &copy; All rights reserved
-                    </span>
+                                    М2Е &copy; All rights reserved
+                                </span>
                         </div>
                     </div>
                 </footer>
             </div>
         </div>
-        </div>
+    </div>
 
         <div class="it-start__popup-overlay"></div>
-        <div class="popup__wrapper popup__wrapper_vacancy">
+        <div class="popup__wrapper popup__wrapper_vacancy mCustomScrollbar">
             <img class="popup-close__button_it-start" src="./img/popup-close.svg" alt="" />
             <div class="vacancy-card active">
                 <div class="vacancy-card-content">
@@ -674,6 +697,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"
         ></script>
+        <script src="./custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="slick/slick.min.js"></script>
         <script src="./particles.js-master/particles.js"></script>
         <script type="text/javascript" src="./js/it-start.js"></script>
