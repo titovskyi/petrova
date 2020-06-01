@@ -138,8 +138,6 @@ $(document).ready(function () {
     // ########################################
     $('.app-container').mCustomScrollbar({
         theme: 'minimal',
-        mouseWheelPixels: 200,
-        scrollInertia: 1000,
         setHeight: false,
         callbacks: {
             whileScrolling: function () {
@@ -205,17 +203,36 @@ $(document).ready(function () {
             const addFileButton = $('.button_add-file');
             const addFileInput = addFileButton.prev();
 
-            addFileButton.on('click', function () {
+            addFileButton.on('click', function (event) {
                 addFileInput.click();
             });
 
-            addFileInput.on('input', function () {
+            addFileInput.on('input', function (e) {
                 if (addFileInput.val()) {
                     addFileButton.addClass('file-dirty');
+                    let name = e.target.value.substring(e.target.value.lastIndexOf('\\') + 1);
+                    if(name.length > 24) {
+                        name = name.slice(0, 24) + '...';
+                    }
+                    addFileButton[0].innerHTML = `<span>${name}</span><img class="remove-file_button" src="./img/popup-close.svg" alt="" />`;
+
+                    $('.remove-file_button').on('click', function(e) {
+                        e.stopPropagation();
+                        addFileButton.removeClass('file-dirty');
+                        addFileButton[0].innerHTML = `<img src="./img/clip.svg" /><span>Прикрепить CV</span>`;
+
+                        addFileButton.prev().val(null);
+
+                        $('#send-question').attr('disabled', true);
+                        checkInfoPopupInputValid();
+                    });
+                    checkInfoPopupInputValid();
                 } else {
                     addFileButton.removeClass('file-dirty');
+                    addFileButton[0].innerHTML = `<img src="./img/clip.svg" /><span>Прикрепить CV</span>`;
                 }
             });
+
         }
 
         $('.vacancy__popup-overlay').on('click', function () {
@@ -271,7 +288,7 @@ $(document).ready(function () {
 
         if (validForm === false) {
             for (let i = 0; inputArray.length > i; i++) {
-                if (i != CVindex) {
+                if(i !== CVindex) {
                     if (regexpArray[i].test(inputArray[i].val())) {
                         validForm = true;
                     } else {
