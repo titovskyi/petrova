@@ -129,16 +129,30 @@ $(document).ready(function () {
 
     // ########################################
 
+    // $('.app-container').slimScroll({
+    //     height: '100%'
+    //
+    // });
+
+
     // Candidate info popup init actions
     (function () {
         $('#send-question').attr('disabled', true);
 
         $($('.open-vacancy-choose-button')[0]).on('click', function () {
+            $('body').addClass('body_overflow-hidden');
+
+            if ($('.popup__wrapper_vacancy').height() > $(window).height()) {
+                $('.popup__wrapper_vacancy').addClass('scrollable-popup');
+                $('.vacancy-card').addClass('vacancy-card_border-null')
+            } else {
+                $('.popup__wrapper_vacancy').removeClass('scrollable-popup');
+            }
+
             $('.app-container').addClass('blur-block');
             $('.vacancy__popup-overlay').addClass('show-overlay');
             $('.popup__wrapper_vacancy').addClass('popup__wrapper_show');
 
-            clearForm(true);
             checkInfoPopupInputValid();
         });
 
@@ -149,24 +163,32 @@ $(document).ready(function () {
             addFileButton.on('click', function () {
                 addFileInput.click();
             });
+
+            addFileInput.on('input', function () {
+                if (addFileInput.val()) {
+                    addFileButton.addClass('file-dirty');
+                } else {
+                    addFileButton.removeClass('file-dirty');
+                }
+            });
         }
-        $('.vacancy__popup-overlay').on('click', function() {
-            if (confirm('You will lose your form data!')) {
-                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
-                $('.app-container').removeClass('blur-block');
-                $('.vacancy__popup-overlay').removeClass('show-overlay');
-            } else {
-                return false;
-            }
-        })
+
+        $('.vacancy__popup-overlay').on('click', function () {
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show scrollable-popup');
+            $('.vacancy-card').removeClass('vacancy-card_border-null')
+
+            $('.app-container').removeClass('blur-block');
+            $('.vacancy__popup-overlay').removeClass('show-overlay');
+        });
+
         $('.popup-close__button').on('click', function () {
-            if (confirm('You will lose your form data!')) {
-                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
-                $('.app-container').removeClass('blur-block');
-                $('.vacancy__popup-overlay').removeClass('show-overlay');
-            } else {
-                return false;
-            }
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show scrollable-popup');
+            $('.vacancy-card').removeClass('vacancy-card_border-null')
+
+            $('.app-container').removeClass('blur-block');
+            $('.vacancy__popup-overlay').removeClass('show-overlay');
         });
     })();
 
@@ -198,8 +220,6 @@ $(document).ready(function () {
     }
 
     function checkInfoFormValid(regexpArray, inputArray) {
-
-
         let validForm = false;
         const CVindex = inputArray.length - 1;
         const vacancyChoosed = !!Number($('#vacancy-select').val());
@@ -231,6 +251,17 @@ $(document).ready(function () {
 
     (function () {
         $('.open-details-popup').on('click', function () {
+            const detailedPopup = $('.popup__wrapper_detailed-vacancy');
+            const windowHeight = $(window).height();
+
+            if (detailedPopup.height() > windowHeight) {
+                detailedPopup.addClass('scrollable-popup');
+            } else {
+                detailedPopup.removeClass('scrollable-popup');
+            }
+
+            $('body').addClass('body_overflow-hidden');
+
             $('.app-container').addClass('blur-block');
             $('.detailed-vacancy__popup-overlay').addClass('show-overlay');
             $('.popup__wrapper_detailed-vacancy').addClass('popup__wrapper_show');
@@ -238,23 +269,34 @@ $(document).ready(function () {
         });
 
         $('.popup-close__button_detailed-vacancy').on('click', function () {
-            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show');
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show scrollable-popup');
+
             $('.app-container').removeClass('blur-block');
             $('.detailed-vacancy__popup-overlay').removeClass('show-overlay');
+            document.getElementsByClassName('popup__wrapper_detailed-vacancy')[0].scrollTop = 0;
+
         });
 
-        $('.detailed-vacancy__popup-overlay').on('click', function() {
-            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show');
+        $('.detailed-vacancy__popup-overlay').on('click', function () {
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show scrollable-popup');
+
             $('.app-container').removeClass('blur-block');
             $('.detailed-vacancy__popup-overlay').removeClass('show-overlay');
         });
 
         $('#detailed-vacancy-send-button').on('click', function () {
-            clearForm(true);
+            if ($('.popup__wrapper_vacancy').height() > $(window).height()) {
+                $('.popup__wrapper_vacancy').addClass('scrollable-popup');
+                $('.vacancy-card').addClass('vacancy-card_border-null')
+            } else {
+                $('.popup__wrapper_vacancy').removeClass('scrollable-popup');
+            }
 
             $('.popup__wrapper_vacancy').addClass('popup__wrapper_show');
             $('.vacancy__popup-overlay').addClass('show-overlay');
-            $('.popup__wrapper_detailed-vacancy').removeClass('popup__wrapper_show');
+            $('.popup__wrapper_detailed-vacancy').removeClass('scrollable-popup popup__wrapper_show');
             $('.detailed-vacancy__popup-overlay').removeClass('show-overlay');
         });
     })();
@@ -303,30 +345,35 @@ $(document).ready(function () {
 
         $('#send-question').attr('disabled', true);
         $('.open-popup-button').on('click', function () {
+            $('body').addClass('body_overflow-hidden');
+
+            if ($('.popup__wrapper').height() > $(window).height()) {
+                $('.popup__wrapper').addClass('scrollable-popup');
+            } else {
+                $('.popup__wrapper').removeClass('scrollable-popup');
+            }
+
             $('.app-container').addClass('blur-block');
             $('.popup__wrapper').addClass('contacts-popup__wrapper_show');
             $('.popup-overlay').addClass('show-overlay');
 
-            clearForm(false);
             checkQuestionPopupInputValid(regexpArray, inputArray);
         });
 
-            $('.popup-close__button').on('click', function () {
-                resetForm(inputArray);
-                $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
-                $('.app-container').removeClass('blur-block');
-                $('.popup-overlay').removeClass('show-overlay');
-            });
+        $('.popup-close__button').on('click', function () {
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper').removeClass('contacts-popup__wrapper_show scrollable-popup');
 
+            $('.app-container').removeClass('blur-block');
+            $('.popup-overlay').removeClass('show-overlay');
+        });
 
-        $('.popup-overlay').on('click', function() {
-            if (confirm('You will lose your form data!')) {
-                $('.popup__wrapper').removeClass('contacts-popup__wrapper_show');
-                $('.app-container').removeClass('blur-block');
-                $('.popup-overlay').removeClass('show-overlay');
-            } else {
-                return false;
-            }
+        $('.popup-overlay').on('click', function () {
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper').removeClass('contacts-popup__wrapper_show scrollable-popup');
+
+            $('.app-container').removeClass('blur-block');
+            $('.popup-overlay').removeClass('show-overlay');
         });
     })();
 

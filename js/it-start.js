@@ -68,12 +68,19 @@ $(document).ready(function () {
         $('#send-question').attr('disabled', true);
 
         $('.it-start__button').on('click', function () {
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            $('body').addClass('body_overflow-hidden');
+
+            if ($('.popup__wrapper_vacancy').height() > $(window).height()) {
+                $('.popup__wrapper_vacancy').addClass('scrollable-popup');
+                $('.vacancy-card').addClass('vacancy-card_border-null');
+            } else {
+                $('.popup__wrapper_vacancy').removeClass('scrollable-popup');
+            }
+
             $('.app-container').addClass('blur-block');
             $('.it-start__popup-overlay').addClass('show-overlay');
             $('.popup__wrapper_vacancy').addClass('popup__wrapper_show');
 
-            clearForm(true);
             checkItStartPopupInputValid();
         });
 
@@ -84,26 +91,32 @@ $(document).ready(function () {
             addFileButton.on('click', function () {
                 addFileInput.click();
             });
+
+            addFileInput.on('input', function () {
+                if (addFileInput.val()) {
+                    addFileButton.addClass('file-dirty');
+                } else {
+                    addFileButton.removeClass('file-dirty');
+                }
+            });
         }
 
-        $('.it-start__popup-overlay').on('click', function() {
-            if (confirm('You will lose your form data!')) {
-                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
-                $('.app-container').removeClass('blur-block');
-                $('.it-start__popup-overlay').removeClass('show-overlay');
-            } else {
-                return false;
-            }
+        $('.it-start__popup-overlay').on('click', function () {
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show scrollable-popup');
+            $('.vacancy-card').removeClass('vacancy-card_border-null')
+
+            $('.app-container').removeClass('blur-block');
+            $('.it-start__popup-overlay').removeClass('show-overlay');
         });
 
         $('.popup-close__button_it-start').on('click', function () {
-            if (confirm('You will lose your form data!')) {
-                $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show');
-                $('.app-container').removeClass('blur-block');
-                $('.it-start__popup-overlay').removeClass('show-overlay');
-            } else {
-                return false;
-            }
+            $('body').removeClass('body_overflow-hidden');
+            $('.popup__wrapper_vacancy').removeClass('popup__wrapper_show scrollable-popup');
+            $('.vacancy-card').removeClass('vacancy-card_border-null')
+
+            $('.app-container').removeClass('blur-block');
+            $('.it-start__popup-overlay').removeClass('show-overlay');
         });
     })();
 
@@ -191,7 +204,6 @@ $(document).ready(function () {
         $('#vacancy-select').prop('selectedIndex', 0);
     }
 
-
     // Custom select
 
     (function () {
@@ -253,7 +265,6 @@ $(document).ready(function () {
             });
         }
     })();
-
 
     function closeAllSelect(elmnt) {
         /* A function that will close all select boxes in the document,

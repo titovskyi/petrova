@@ -351,6 +351,11 @@ body {
     outline: none !important;
 }
 
+.file-dirty {
+    background: rgba(253, 231, 36, 0.25);
+    border: none;
+}
+
 .button_add-file img {
     margin-right: 7px;
 }
@@ -839,6 +844,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
+    cursor: pointer;
 }
 
 .vacancies-tags {
@@ -890,6 +896,7 @@ body {
     text-decoration: none !important;
     text-transform: none !important;
     transition: color 0.2s;
+    cursor: pointer;
 }
 
 .details-link:hover {
@@ -919,6 +926,7 @@ body {
 .lead-slider__item {
     outline: none !important;
     transition: all 0.5s !important;
+    cursor: pointer;
 }
 
 .lead-slider__item.slick-current .lead-slider__img {
@@ -954,6 +962,7 @@ body {
     width: 100%;
     /*height: 100%;*/
     object-fit: cover;
+    cursor: pointer;
 }
 
 .prev-arrow {
@@ -1528,6 +1537,7 @@ body {
     line-height: 0;
     color: #ffffff;
     margin: 10px 0 0 0;
+    letter-spacing: 0.1px;
 }
 
 .blog-card__action_city,
@@ -1559,6 +1569,10 @@ body {
 .blog-card-slider {
     margin: 0 auto;
     text-align: center;
+}
+
+.blog-card-slider__item {
+    cursor: pointer;
 }
 
 .blog-card-slider__img {
@@ -1706,7 +1720,7 @@ body {
 }
 
 .blog-card__info-less {
-    height: 70px;
+    height: 67px;
 }
 
 .blog-card__tags {
@@ -1838,7 +1852,7 @@ body {
     right: 180px;
     background: #0d0d0d;
     border-radius: 7px;
-    padding: 3px;
+    padding: 3px 3px 15px 3px;
     text-decoration: none !important;
 }
 
@@ -1961,6 +1975,7 @@ body {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .mobile-slider-controls {
@@ -2440,10 +2455,21 @@ body {
 
 .popup__wrapper {
     display: none;
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.scrollable-popup {
+    top: 0;
     transform: translate(-50%, 0);
+    height: 100%;
+    overflow: auto;
+}
+
+.body_overflow-hidden {
+    overflow: hidden;
 }
 
 .popup__wrapper_vacancy {
@@ -2468,6 +2494,10 @@ body {
     line-height: 125.1%;
     letter-spacing: -1px;
     color: #fde724;
+}
+
+.vacancy-card_border-null {
+    border-radius: 0;
 }
 
 .vacancy-card.active {
@@ -2617,8 +2647,9 @@ body {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #262626 inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
     -webkit-text-fill-color: #ffffff !important;
 }
 
@@ -2637,7 +2668,7 @@ input:-webkit-autofill:active {
 }
 
 .textarea-valid-line {
-    height: 149px;
+    height: calc(100% - 33px);
 }
 
 .invalid-icon {
@@ -2677,7 +2708,6 @@ input:-webkit-autofill:active {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     font-size: 19px;
-    line-height: 15px;
     color: #ffffff;
     outline: none;
     resize: none;
@@ -2778,16 +2808,22 @@ input:-webkit-autofill:active {
     background-color: #272727;
 }
 
-/*TEXTAREA SCROLLBAR*/
-::-webkit-scrollbar {
-    width: 7px;
-    height: 0;
-}
+/*.nano {background:#bba;width:500px;height:500px; }*/
+/*.nano .content {padding:10px; }*/
+/*.nano .pane   {background:#888; }*/
+/*.nano .slider {background:#111; }*/
 
-::-webkit-scrollbar-thumb:vertical {
-    background: #303030;
-    border-radius: 4px;
-}
+
+/*TEXTAREA SCROLLBAR*/
+/*::-webkit-scrollbar {*/
+/*    width: 7px;*/
+/*    height: 0;*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb:vertical {*/
+/*    background: #303030;*/
+/*    border-radius: 4px;*/
+/*}*/
 
 /* ALL MEDIA */
 
@@ -2948,7 +2984,7 @@ input:-webkit-autofill:active {
         right: 135px;
         top: 180px;
         width: 130px;
-        padding: 0;
+        padding: 0 0 12px 0;
     }
 
     .address-card-header__line {
@@ -3083,6 +3119,7 @@ input:-webkit-autofill:active {
     .vacancies-content__text {
         font-size: 14px;
         line-height: 20px;
+
     }
 
     .vacancies-tag-item {
@@ -3098,10 +3135,12 @@ input:-webkit-autofill:active {
 
     .lead-slider-img__wrapper {
         margin: 10px 8% 20px;
+        cursor: pointer;
     }
 
     .lead-slider__img {
         border-radius: 10px;
+        cursor: pointer;
     }
 
     .lead-slider .slick-dots > li {
@@ -3252,8 +3291,12 @@ input:-webkit-autofill:active {
         line-height: 140%;
     }
 
+    .blog-card__info-less {
+        height: 72px;
+    }
+
     .more {
-        bottom: -3px;
+        bottom: -2px;
         width: 80%;
     }
 
