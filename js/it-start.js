@@ -3,13 +3,15 @@ $(document).ready(function () {
 
     $('.app-container').mCustomScrollbar({
         theme: 'minimal',
-        mouseWheelPixels: 200,
-        scrollInertia: 1000
+        mouseWheelPixels: 100,
+        scrollInertia: 0
     });
 
     if ($('.popup__wrapper_vacancy')) {
         $('.popup__wrapper_vacancy').mCustomScrollbar({
-            theme: 'minimal'
+            theme: 'minimal',
+            mouseWheelPixels: 100,
+            scrollInertia: 0
         });
     }
 
@@ -103,11 +105,29 @@ $(document).ready(function () {
                 addFileInput.click();
             });
 
-            addFileInput.on('input', function () {
+            addFileInput.on('input', function (e) {
                 if (addFileInput.val()) {
                     addFileButton.addClass('file-dirty');
+                    let name = e.target.value.substring(e.target.value.lastIndexOf('\\') + 1);
+                    if(name.length > 24) {
+                        name = name.slice(0, 24) + '...';
+                    }
+                    addFileButton[0].innerHTML = `<span>${name}</span><img class="remove-file_button" src="./img/popup-close.svg" alt="" />`;
+
+                    $('.remove-file_button').on('click', function(e) {
+                        e.stopPropagation();
+                        addFileButton.removeClass('file-dirty');
+                        addFileButton[0].innerHTML = `<img src="./img/clip.svg" /><span>Прикрепить CV</span>`;
+
+                        addFileButton.prev().val(null);
+
+                        $('#send-question').attr('disabled', true);
+                        checkItStartPopupInputValid();
+                    });
+                    checkItStartPopupInputValid();
                 } else {
                     addFileButton.removeClass('file-dirty');
+                    addFileButton[0].innerHTML = `<img src="./img/clip.svg" /><span>Прикрепить CV</span>`;
                 }
             });
         }

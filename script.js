@@ -138,7 +138,8 @@ $(document).ready(function () {
     // ########################################
     $('.app-container').mCustomScrollbar({
         theme: 'minimal',
-        setHeight: false,
+        mouseWheelPixels: 100,
+        scrollInertia: 0,
         callbacks: {
             whileScrolling: function () {
                 if($('.statistics').offset()) {
@@ -164,18 +165,24 @@ $(document).ready(function () {
     if($('.popup__wrapper_vacancy')) {
         $('.popup__wrapper_vacancy').mCustomScrollbar({
             theme: 'minimal',
+            mouseWheelPixels: 100,
+            scrollInertia: 0
         })
     }
 
     if($('.popup__wrapper_detailed-vacancy')) {
         $('.popup__wrapper_detailed-vacancy').mCustomScrollbar({
             theme: 'minimal',
+            mouseWheelPixels: 100,
+            scrollInertia: 0
         })
     }
 
     if($('.popup__wrapper_contacts')) {
         $('.popup__wrapper_contacts').mCustomScrollbar({
             theme: 'minimal',
+            mouseWheelPixels: 100,
+            scrollInertia: 0
         })
     }
 
