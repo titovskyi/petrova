@@ -136,6 +136,7 @@ $(document).ready(function () {
     }
 
     // ########################################
+
     $('.app-container').mCustomScrollbar({
         theme: 'minimal',
         mouseWheelPixels: 100,
@@ -148,7 +149,7 @@ $(document).ready(function () {
                     }
 
                     let scroll = $(window).scrollTop();
-
+                    console.log(windowHeight);
                     if (scroll + windowHeight >= $('.statistics').offset().top) {
                         runCounter(initialItems, options);
 

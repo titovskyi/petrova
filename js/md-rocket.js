@@ -43,34 +43,62 @@
                 rocketBlock.removeClass('active');
                 init = false;
             }, 1500);
-
-
         }
 
+        $('.app-container').mCustomScrollbar({
+            theme: 'minimal',
+            mouseWheelPixels: 100,
+            scrollInertia: 0,
+            callbacks: {
+                whileScrolling: function() {
+                    if (!rocketBlock.hasClass('active')) {
+                        rocketBlock.addClass('active');
+                    }
 
-        $(window).on("scroll", function() {
-            if (!rocketBlock.hasClass('active')) {
-                rocketBlock.addClass('active');
+                    currentScrollTop = $('#app-container')[0].mcs.top;
+
+                    if (tempScrollTop > currentScrollTop ) {
+                        rocketContainer.removeClass('rotate-top');
+                    } else if (tempScrollTop < currentScrollTop ) {
+                        rocketContainer.addClass('rotate-top');
+                    }
+
+                    // if ($("html")[0].scrollHeight - $("html")[0].scrollTop === $("html")[0].clientHeight) {
+                    //     rocketContainer.addClass('rotate-top');
+                    // }
+
+                    if (currentScrollTop === 0) {
+                        rocketContainer.removeClass('rotate-top');
+                    }
+
+                    tempScrollTop = currentScrollTop;
+                }
             }
-
-            currentScrollTop = $(window).scrollTop();
-
-            if (tempScrollTop < currentScrollTop ) {
-                rocketContainer.removeClass('rotate-top');
-            } else if (tempScrollTop > currentScrollTop ) {
-                rocketContainer.addClass('rotate-top');
-            }
-
-            // if ($("html")[0].scrollHeight - $("html")[0].scrollTop === $("html")[0].clientHeight) {
-            //     rocketContainer.addClass('rotate-top');
-            // }
-
-            if (currentScrollTop === 0) {
-                rocketContainer.removeClass('rotate-top');
-            }
-
-            tempScrollTop = currentScrollTop;
         });
+
+        // $(window).on("scroll", function() {
+        //     if (!rocketBlock.hasClass('active')) {
+        //         rocketBlock.addClass('active');
+        //     }
+        //
+        //     currentScrollTop = $(window).scrollTop();
+        //
+        //     if (tempScrollTop < currentScrollTop ) {
+        //         rocketContainer.removeClass('rotate-top');
+        //     } else if (tempScrollTop > currentScrollTop ) {
+        //         rocketContainer.addClass('rotate-top');
+        //     }
+        //
+        //     // if ($("html")[0].scrollHeight - $("html")[0].scrollTop === $("html")[0].clientHeight) {
+        //     //     rocketContainer.addClass('rotate-top');
+        //     // }
+        //
+        //     if (currentScrollTop === 0) {
+        //         rocketContainer.removeClass('rotate-top');
+        //     }
+        //
+        //     tempScrollTop = currentScrollTop;
+        // });
 
         function runCheckInterval() {
             checkInterval = setInterval(function () {

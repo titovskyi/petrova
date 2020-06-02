@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    $('.app-container').mCustomScrollbar({
+        theme: 'minimal',
+        mouseWheelPixels: 100,
+        scrollInertia: 0
+    });
+
     // ########################################
 
     $('.blog-card-slider').slick({

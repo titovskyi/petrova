@@ -8,7 +8,7 @@ let typedArr = [{ element: $('.typed-slide-1'),
     "regions"       : ["UK", "UA"],
     "high_priority" : "quality",
     "cooperation"   : "longterm",
-    "bureaucracy"   : null,
+    "bureaucracy"   : null
 }`]}, { element: $('.typed-slide-2'), data: [`"M2E": {
     "work_hours"    : "flexible",
     "vacation_days" : 15,

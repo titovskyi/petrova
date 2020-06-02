@@ -1,11 +1,16 @@
 $(document).ready(function () {
     // ########################################
 
-    $('.app-container').mCustomScrollbar({
-        theme: 'minimal',
-        mouseWheelPixels: 100,
-        scrollInertia: 0
-    });
+    // $('.app-container').mCustomScrollbar({
+    //     theme: 'minimal',
+    //     mouseWheelPixels: 100,
+    //     scrollInertia: 0,
+    //     callback: {
+    //         whileScrolling: function() {
+    //
+    //         }
+    //     }
+    // });
 
     if ($('.popup__wrapper_vacancy')) {
         $('.popup__wrapper_vacancy').mCustomScrollbar({
