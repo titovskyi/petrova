@@ -1160,14 +1160,14 @@ body {
 
 .vacancies-top {
     margin-top: 50px;
-    height: 400px;
+    height: 360px;
     display: block;
     position: relative;
 }
 
 .vacancies-top::after {
     content: '';
-    background: url(../img/vacancies-baner.jpg) center center no-repeat;
+    background: url(../img/vacancies-baner.png) center center no-repeat;
     background-size: cover;
     opacity: 0.3;
     top: 0;
@@ -1178,8 +1178,11 @@ body {
     z-index: -1;
     width: 100%;
     height: 100%;
+    border-radius: 25px;
 }
-
+.vacancies-top .slick-dotted.slick-slider {
+    margin-bottom: 0;
+}
 .vacancies-slider {
     height: 250px;
 }
@@ -1189,7 +1192,7 @@ body {
 }
 
 .vacancies-slider .slick-dots {
-    bottom: -150px;
+    bottom: -100px;
 }
 
 .vacancies-slider .slick-dots > li {
@@ -1209,7 +1212,7 @@ body {
 }
 
 .vacancies-filter {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
 }
 
 .search__input {
@@ -2721,7 +2724,7 @@ body {
     background-color: #262626;
     border-radius: 5px;
     border: none;
-    padding: 0 34px 0 19px;
+    padding: 0 40px 0 19px;
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     font-size: 19px;
@@ -2791,7 +2794,7 @@ input:-webkit-autofill:active {
     border-radius: 5px;
     width: 100%;
     height: 155px;
-    padding: 15px 30px 15px 17px;
+    padding: 15px 40px 15px 17px;
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     font-size: 19px;
