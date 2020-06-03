@@ -238,6 +238,114 @@ $(document).ready(function () {
         $('#vacancy-select').prop('selectedIndex', 0);
     }
 
+    (function () {
+        const viberLinks = document.getElementsByClassName('viber-link');
+        const tgLinks = document.getElementsByClassName('tg-link');
+        const instaLinks = document.getElementsByClassName('insta-link');
+        const facebookLinks = document.getElementsByClassName('facebook-link');
+        const linkedInLinks = document.getElementsByClassName('linkedin-link');
+
+        for(let i = 0; viberLinks.length > i; i++) {
+            viberLinks[i].addEventListener('click', () => {
+                viberLink();
+            });
+        }
+
+        for(let i = 0; tgLinks.length > i; i++) {
+            tgLinks[i].addEventListener('click', () => {
+                tgLink();
+            });
+        }
+
+        for(let i = 0; instaLinks.length > i; i++) {
+            instaLinks[i].addEventListener('click', () => {
+                instaLink();
+            });
+        }
+
+        for(let i = 0; facebookLinks.length > i; i++) {
+            facebookLinks[i].addEventListener('click', () => {
+                facebookLink();
+            });
+        }
+
+        for(let i = 0; linkedInLinks.length > i; i++) {
+            linkedInLinks[i].addEventListener('click', () => {
+                linkedInLink();
+            });
+        }
+
+    })();
+
+    function viberLink() {
+        const system = getMobileOperatingSystem();
+
+        if (system === 'unknown') {
+            window.location = 'viber://chat?number=+380986088008';
+        } else {
+            window.open('viber://add?number=380986088008', '_blank');
+        }
+    };
+
+    function tgLink() {
+        const system = getMobileOperatingSystem();
+
+        if (system === 'unknown') {
+            window.open('https://t.me/m2e_team', '_blank');
+        } else {
+            window.open('tg://resolve?domain=m2e_team', '_blank');
+        }
+    };
+
+    function instaLink() {
+        const system = getMobileOperatingSystem();
+
+        if (system === 'unknown') {
+            window.open('http://instagram.com/_u/m2e_team/', '_blank');
+        } else {
+            window.open('instagram://user?username=m2e_team', '_blank');
+        }
+    };
+
+    function facebookLink() {
+        const system = getMobileOperatingSystem();
+
+        if (system === 'unknown') {
+            window.open('https://www.facebook.com//m2eteam/', '_blank');
+        } else {
+            window.open('fb://profile/m2e_team', '_blank');
+        }
+    };
+
+    function linkedInLink() {
+        const system = getMobileOperatingSystem();
+
+        if (system === 'unknown') {
+            window.open('https://www.linkedin.com/company/m2ecompany', '_blank');
+        } else {
+            window.open('linkedin://company/m2e_team', '_blank');
+        }
+    };
+
+    function getMobileOperatingSystem() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+            return 'Windows Phone';
+        }
+
+        if (/android/i.test(userAgent)) {
+            return 'Android';
+        }
+
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return 'iOS';
+        }
+        return 'unknown';
+    };
+
     // Custom select
 
     (function () {

@@ -927,6 +927,8 @@ body {
     display: none;
 }
 
+
+
 .truncated .vacancy-truncate {
     display: block;
 }
@@ -1151,6 +1153,7 @@ body {
 
 .social-list__link {
     padding: 12px;
+    cursor: pointer;
 }
 
 .social-list__link:hover .icon-hover-fill {
@@ -1980,6 +1983,7 @@ body {
     opacity: 0;
     visibility: hidden;
     padding-left: 28px;
+    cursor: pointer;
 }
 
 .contact__text:hover {
@@ -3300,6 +3304,14 @@ input:-webkit-autofill:active {
 
     .project-list {
         margin-bottom: 8px;
+    }
+
+    .vacancy-truncate {
+        height: 21px;
+    }
+
+    .truncated .vacancies-content__text {
+        max-height: 58px;
     }
 
     .vacancies-content__text {
