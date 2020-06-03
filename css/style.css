@@ -148,8 +148,7 @@ body {
 
 .app-container {
     height: 100%;
-    overflow:auto;
-
+    overflow: auto;
 }
 
 .particles-js {
@@ -909,22 +908,41 @@ body {
 
 .vacancies-card__content {
     margin-top: 8px;
-}
-
-.vacancies-content__text {
-    font-family: Rubik;
+    position: relative;
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
     line-height: 23px;
     letter-spacing: -0.5px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.vacancy-truncate {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 100px;
+    background-color: #0d0d0d;
+    display: none;
+}
+
+.truncated .vacancy-truncate {
+    display: block;
+}
+
+.vacancies-content__text {
     color: rgba(255, 255, 255, 0.5) !important;
     text-decoration: none !important;
-    max-height: 68px;
+    /*max-height: 68px;*/
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
     cursor: pointer;
+}
+
+.truncated .vacancies-content__text {
+    max-height: 68px;
 }
 
 .vacancies-tags {
@@ -1656,7 +1674,7 @@ body {
 }
 
 .blog-card-slider__item {
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .blog-card-slider__img {
@@ -1688,41 +1706,102 @@ body {
 }
 
 .blog-card-slider-controls {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
     bottom: -39px;
     left: 50%;
     transform: translate(-50%, 0);
 }
 
-.blog-card-slider__dots {
-    margin-left: 6px;
-    margin-right: 16px;
+.remove-dots .slick-dots {
+    display: none;
 }
 
-.blog-card-slider__dots .slick-dots {
-    position: static;
-    display: flex;
+.blog-slider .slick-dots li {
+    margin: 0;
 }
 
-.blog-card-slider__dots .slick-dots li {
-    width: 3px;
+.blog-slider .slick-dots li.slick-active button:before {
+    color: #fde724;
+}
+.blog-slider .slick-dots li button:before {
+    color: rgba(255, 255, 255, 0.25);
 }
 
-.blog-card-slider__dots .slick-dots li button {
-    width: 0;
+.blog-slider .slick-next {
+    width: 100px;
+    height: 100%;
+    right: 0;
 }
 
-.blog-card-slider__dots .slick-dots li button:before {
-    color: rgba(255, 255, 255, 0.25) !important;
-    width: 10px;
+.blog-slider:hover .slick-next {
+    background: rgba(255, 255, 255, 0.1);
+    transition: all linear 0.1s;
 }
 
-.blog-card-slider__dots .slick-dots li.slick-active button:before {
-    color: #fde724 !important;
+.blog-slider .slick-next:before {
+    content: '›';
+    font-size: 40px;
+    color: transparent;
 }
+
+.blog-slider:hover .slick-next:before {
+    color: #ffffff;
+    transition: all linear 0.1s;
+}
+
+.blog-slider .slick-prev {
+    width: 100px;
+    height: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+.blog-slider:hover .slick-prev {
+    background: rgba(255, 255, 255, 0.1);
+    transition: all linear 0.1s;
+}
+
+.blog-slider .slick-prev:before{
+    content: '‹';
+    font-size: 40px;
+    color: transparent;
+}
+
+.blog-slider:hover .slick-prev:before {
+    color: #ffffff;
+    transition: all linear 0.1s;
+}
+
+
+/*.blog-card-slider__dots {*/
+/*    margin-left: 6px;*/
+/*    margin-right: 16px;*/
+/*}*/
+
+/*.blog-card-slider__dots .slick-dots {*/
+/*    position: static;*/
+/*    display: flex;*/
+/*}*/
+
+/*.blog-card-slider__dots .slick-dots li {*/
+/*    width: 3px;*/
+/*}*/
+
+/*.blog-card-slider__dots .slick-dots li button {*/
+/*    width: 0;*/
+/*}*/
+
+/*.blog-card-slider__dots .slick-dots li button:before {*/
+/*    color: rgba(255, 255, 255, 0.25) !important;*/
+/*    width: 10px;*/
+/*}*/
+
+/*.blog-card-slider__dots .slick-dots li.slick-active button:before {*/
+/*    color: #fde724 !important;*/
+/*}*/
 
 .blog-card-slider__arrow {
     color: rgba(255, 255, 255, 0.25);
@@ -1758,7 +1837,7 @@ body {
 }
 
 .blog-card__info {
-    margin: 43px 32px 32px 32px;
+    margin: 5px 32px 32px 32px;
 }
 
 .blog-card__info_header {
@@ -1767,6 +1846,7 @@ body {
     font-size: 24px;
     letter-spacing: -1px;
     color: #ffffff;
+    margin-bottom: 20px;
 }
 
 .blog-card__info-wrapper {
@@ -2083,20 +2163,28 @@ body {
 }
 
 .mobile-slider__dots .slick-dots li {
-    width: 3px;
+    width: 8px;
 }
 
 .mobile-slider__dots .slick-dots li button {
-    width: 0;
-}
-
-.mobile-slider__dots .slick-dots li button:before {
-    color: rgba(255, 255, 255, 0.25) !important;
-    width: 10px;
+    /*width: 0;*/
 }
 
 .mobile-slider__dots .slick-dots li.slick-active button:before {
     color: #fde724 !important;
+}
+
+.mobile-slider__dots .slick-dots li button:before {
+    width: 9px;
+    height: 9px;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: transparent;
+    border-radius: 100%;
+    line-height: 10px;
+}
+
+.mobile-slider__dots .slick-dots li.slick-active button:before {
+    background-color: #fde724;
 }
 
 /*CONTACTS END*/
@@ -2614,7 +2702,7 @@ body {
 }
 
 .vacancy-card-content__about-wrapper_it-start {
-    overflow: visible;
+    /*overflow: visible;*/
 }
 
 .vacancy-trancate-points {
@@ -2808,8 +2896,8 @@ input:-webkit-autofill:active {
 }
 
 .form-textarea::-webkit-scrollbar {
-     display: none;
- }
+    display: none;
+}
 
 .form-add-file {
     display: none;
@@ -2844,6 +2932,10 @@ input:-webkit-autofill:active {
     cursor: pointer;
     z-index: 2;
     padding: 5px;
+}
+
+.popup-close__button_contacts {
+    top: 10px;
 }
 
 /*Detailed vacancy popup*/
@@ -3078,7 +3170,6 @@ input:-webkit-autofill:active {
     .address-card {
         right: 135px;
         top: 180px;
-        width: 130px;
         padding: 0 0 12px 0;
     }
 
@@ -3269,6 +3360,10 @@ input:-webkit-autofill:active {
         display: none;
     }
 
+    .mobile-slider__dots .slick-dots li button:before {
+        /*font-size: 10px;*/
+    }
+
     .button-mobile_long {
         display: block;
         margin: 0 auto;
@@ -3343,6 +3438,11 @@ input:-webkit-autofill:active {
     }
 
     .blog-card-slider-controls {
+        /*display: none;*/
+        bottom: -25px;
+    }
+
+    .blog-card-slider__arrow {
         display: none;
     }
 
@@ -3410,8 +3510,8 @@ input:-webkit-autofill:active {
     /*contacts 576*/
 
     .address-card {
-        right: 20%;
-        top: 85px;
+        right: 10%;
+        top: 185px;
     }
 
     .contacts-popup__wrapper {
@@ -3443,12 +3543,6 @@ input:-webkit-autofill:active {
         width: 100%;
     }
 
-    .popup__wrapper {
-        top: 0;
-        left: 0;
-        transform: translate(0, 0);
-    }
-
     .vacancies-tags {
         padding: 0;
     }
@@ -3475,11 +3569,12 @@ input:-webkit-autofill:active {
 
     .vacancy-card {
         width: 100%;
+        border-radius: 0;
+        border-bottom-left-radius: 10px;
     }
-
-    .popup__wrapper {
-        top: 0;
-        left: 0;
+    .address-card {
+        right: 10%;
+        top: 85px;
     }
 }
 
@@ -3512,7 +3607,7 @@ input:-webkit-autofill:active {
     }
 
     .vacancies-filter {
-        margin-top: 35px;
+        /*margin-top: 35px;*/
     }
 
     .vacancies-list {

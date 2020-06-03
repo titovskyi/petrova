@@ -47,7 +47,6 @@ let typedArr = [{ element: $('.typed-slide-1'),
         fade: true,
         cssEase: 'linear',
         dots: true,
-
     })
 
     vacSlide.on("beforeChange", function (){

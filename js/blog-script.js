@@ -10,9 +10,9 @@ $(document).ready(function () {
     $('.blog-card-slider').slick({
         dots: true,
         arrows: true,
-        prevArrow: '.blog-card-slider__arrow_prev',
-        nextArrow: '.blog-card-slider__arrow_next',
-        appendDots: '.blog-card-slider__dots',
+        // prevArrow: '.blog-card-slider__arrow_prev',
+        // nextArrow: '.blog-card-slider__arrow_next',
+        // appendDots: '.blog-card-slider__dots',
         adaptiveHeight: true,
         centerPadding: '19px'
     });
@@ -83,7 +83,13 @@ $(document).ready(function () {
         for (let i = 0; textBlocks.length > i; i++) {
             const currentTextBlock = $(textBlocks[i]);
 
-            onCollapse(currentTextBlock[0]);
+            if(currentTextBlock.height() > 66) {
+                $(currentTextBlock).addClass('blog-card__info-less');
+                onCollapse(currentTextBlock[0]);
+            } else {
+                $(currentTextBlock).children().eq(1).hide();
+                $(currentTextBlock).children().eq(2).hide();
+            }
         }
     }
 
@@ -100,6 +106,18 @@ $(document).ready(function () {
             })
         })
     }
+
+    // ########################################
+
+    (function () {
+        let sliders = $('.slick-track');
+
+        sliders.each(function(index, slider) {
+            if($(slider).children().length === 1) {
+                $(this).closest('.blog-slider').addClass('remove-dots');
+            }
+        })
+    })()
 
     // ########################################
 });

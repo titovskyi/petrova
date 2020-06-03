@@ -137,19 +137,37 @@ $(document).ready(function () {
 
     // ########################################
 
+    (function truncateVacancyCardText() {
+        const allCards = $('.vacancies-card__content');
+
+        allCards.each(function (index, cardText) {
+            let card = $(cardText);
+
+            if (card.height() > 68) {
+                card.addClass('truncated');
+                // card.children().eq(1).show();
+            } else {
+                card.removeClass('truncated');
+                // card.children().eq(1).hide();
+            }
+        });
+    })();
+
+    // ########################################
+
     $('.app-container').mCustomScrollbar({
         theme: 'minimal',
         mouseWheelPixels: 100,
         scrollInertia: 0,
         callbacks: {
             whileScrolling: function () {
-                if($('.statistics').offset()) {
+                if ($('.statistics').offset()) {
                     if (isRunCounter) {
                         return;
                     }
 
                     let scroll = $(window).scrollTop();
-                    console.log(windowHeight);
+
                     if (scroll + windowHeight >= $('.statistics').offset().top) {
                         runCounter(initialItems, options);
 
@@ -158,33 +176,32 @@ $(document).ready(function () {
                         $(window).off('scroll');
                     }
                 }
-
             }
         }
     });
 
-    if($('.popup__wrapper_vacancy')) {
+    if ($('.popup__wrapper_vacancy')) {
         $('.popup__wrapper_vacancy').mCustomScrollbar({
             theme: 'minimal',
             mouseWheelPixels: 100,
             scrollInertia: 0
-        })
+        });
     }
 
-    if($('.popup__wrapper_detailed-vacancy')) {
+    if ($('.popup__wrapper_detailed-vacancy')) {
         $('.popup__wrapper_detailed-vacancy').mCustomScrollbar({
             theme: 'minimal',
             mouseWheelPixels: 100,
             scrollInertia: 0
-        })
+        });
     }
 
-    if($('.popup__wrapper_contacts')) {
+    if ($('.popup__wrapper_contacts')) {
         $('.popup__wrapper_contacts').mCustomScrollbar({
             theme: 'minimal',
             mouseWheelPixels: 100,
             scrollInertia: 0
-        })
+        });
     }
 
     // Candidate info popup init actions
@@ -219,12 +236,12 @@ $(document).ready(function () {
                 if (addFileInput.val()) {
                     addFileButton.addClass('file-dirty');
                     let name = e.target.value.substring(e.target.value.lastIndexOf('\\') + 1);
-                    if(name.length > 24) {
+                    if (name.length > 24) {
                         name = name.slice(0, 24) + '...';
                     }
                     addFileButton[0].innerHTML = `<span>${name}</span><img class="remove-file_button" src="./img/popup-close.svg" alt="" />`;
 
-                    $('.remove-file_button').on('click', function(e) {
+                    $('.remove-file_button').on('click', function (e) {
                         e.stopPropagation();
                         addFileButton.removeClass('file-dirty');
                         addFileButton[0].innerHTML = `<img src="./img/clip.svg" /><span>Прикрепить CV</span>`;
@@ -240,7 +257,6 @@ $(document).ready(function () {
                     addFileButton[0].innerHTML = `<img src="./img/clip.svg" /><span>Прикрепить CV</span>`;
                 }
             });
-
         }
 
         $('.vacancy__popup-overlay').on('click', function () {
@@ -296,7 +312,7 @@ $(document).ready(function () {
 
         if (validForm === false) {
             for (let i = 0; inputArray.length > i; i++) {
-                if(i !== CVindex) {
+                if (i !== CVindex) {
                     if (regexpArray[i].test(inputArray[i].val())) {
                         validForm = true;
                     } else {
@@ -551,7 +567,7 @@ $(document).ready(function () {
 
     // ########################################
 
-    function trancateText() {
+    function truncateVacancyCardTextText() {
         if ($('#vacancy-card-content__about').height() > 66) {
             $('.vacancy-trancate-points').addClass('vacancy-trancate-points_show');
         }
@@ -598,7 +614,7 @@ $(document).ready(function () {
                             this.setAttribute('class', 'vacancy-same-as-selected');
 
                             $(this).closest('.vacancy-card').addClass('active');
-                            trancateText();
+                            truncateVacancyCardTextText();
 
                             break;
                         }
