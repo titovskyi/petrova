@@ -115,12 +115,12 @@ $(document).ready(function () {
                 if (addFileInput.val()) {
                     addFileButton.addClass('file-dirty');
                     let name = e.target.value.substring(e.target.value.lastIndexOf('\\') + 1);
-                    if(name.length > 24) {
+                    if (name.length > 24) {
                         name = name.slice(0, 24) + '...';
                     }
                     addFileButton[0].innerHTML = `<span>${name}</span><img class="remove-file_button" src="./img/popup-close.svg" alt="" />`;
 
-                    $('.remove-file_button').on('click', function(e) {
+                    $('.remove-file_button').on('click', function (e) {
                         e.stopPropagation();
                         addFileButton.removeClass('file-dirty');
                         addFileButton[0].innerHTML = `<img src="./img/clip.svg" /><span>Прикрепить CV</span>`;
@@ -160,7 +160,7 @@ $(document).ready(function () {
         const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         const phoneReg = /^\+?3?8?(0\d{9})$/;
         const messageReg = /^.{1,2800}$/;
-        const notEmpty = /.{1,}/;
+        const notEmpty = /^.{1,}/;
 
         const regexpArray = [nameReg, emailReg, phoneReg, messageReg, notEmpty];
         const inputArray = [$('#name-input'), $('#email-input'), $('#phone-input'), $('#text-textarea'), $('#file-input')];
@@ -191,6 +191,8 @@ $(document).ready(function () {
         if (validForm === false) {
             for (let i = 0; inputArray.length > i; i++) {
                 if (i != CVindex) {
+                    console.log(regexpArray[i]);
+                    console.log(inputArray[i]);
                     if (regexpArray[i].test(inputArray[i].val())) {
                         validForm = true;
                     } else {
@@ -246,36 +248,35 @@ $(document).ready(function () {
         const facebookLinks = document.getElementsByClassName('facebook-link');
         const linkedInLinks = document.getElementsByClassName('linkedin-link');
 
-        for(let i = 0; viberLinks.length > i; i++) {
+        for (let i = 0; viberLinks.length > i; i++) {
             viberLinks[i].addEventListener('click', () => {
                 viberLink();
             });
         }
 
-        for(let i = 0; tgLinks.length > i; i++) {
+        for (let i = 0; tgLinks.length > i; i++) {
             tgLinks[i].addEventListener('click', () => {
                 tgLink();
             });
         }
 
-        for(let i = 0; instaLinks.length > i; i++) {
+        for (let i = 0; instaLinks.length > i; i++) {
             instaLinks[i].addEventListener('click', () => {
                 instaLink();
             });
         }
 
-        for(let i = 0; facebookLinks.length > i; i++) {
+        for (let i = 0; facebookLinks.length > i; i++) {
             facebookLinks[i].addEventListener('click', () => {
                 facebookLink();
             });
         }
 
-        for(let i = 0; linkedInLinks.length > i; i++) {
+        for (let i = 0; linkedInLinks.length > i; i++) {
             linkedInLinks[i].addEventListener('click', () => {
                 linkedInLink();
             });
         }
-
     })();
 
     function viberLink() {
@@ -286,7 +287,7 @@ $(document).ready(function () {
         } else {
             window.open('viber://add?number=380986088008', '_blank');
         }
-    };
+    }
 
     function tgLink() {
         const system = getMobileOperatingSystem();
@@ -296,7 +297,7 @@ $(document).ready(function () {
         } else {
             window.open('tg://resolve?domain=m2e_team', '_blank');
         }
-    };
+    }
 
     function instaLink() {
         const system = getMobileOperatingSystem();
@@ -306,7 +307,7 @@ $(document).ready(function () {
         } else {
             window.open('instagram://user?username=m2e_team', '_blank');
         }
-    };
+    }
 
     function facebookLink() {
         const system = getMobileOperatingSystem();
@@ -316,7 +317,7 @@ $(document).ready(function () {
         } else {
             window.open('fb://profile/m2e_team', '_blank');
         }
-    };
+    }
 
     function linkedInLink() {
         const system = getMobileOperatingSystem();
@@ -326,7 +327,7 @@ $(document).ready(function () {
         } else {
             window.open('linkedin://company/m2e_team', '_blank');
         }
-    };
+    }
 
     function getMobileOperatingSystem() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -345,7 +346,13 @@ $(document).ready(function () {
             return 'iOS';
         }
         return 'unknown';
-    };
+    }
+
+    (function truncateVacancyCardTextText() {
+        if ($('#vacancy-card-content__about').height() > 66) {
+            $('.vacancy-trancate-points').addClass('vacancy-trancate-points_show');
+        }
+    })();
 
     // Custom select
 

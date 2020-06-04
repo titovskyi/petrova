@@ -916,6 +916,7 @@ body {
     line-height: 23px;
     letter-spacing: -0.5px;
     color: rgba(255, 255, 255, 0.5);
+    min-height: 68px;
 }
 
 .vacancy-truncate {
@@ -926,8 +927,6 @@ body {
     background-color: #0d0d0d;
     display: none;
 }
-
-
 
 .truncated .vacancy-truncate {
     display: block;
@@ -1734,7 +1733,7 @@ body {
 }
 
 .blog-slider .slick-next {
-    width: 100px;
+    width: 50px;
     height: 100%;
     right: 0;
 }
@@ -1751,12 +1750,12 @@ body {
 }
 
 .blog-slider:hover .slick-next:before {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.5);
     transition: all linear 0.1s;
 }
 
 .blog-slider .slick-prev {
-    width: 100px;
+    width: 50px;
     height: 100%;
     left: 0;
     z-index: 1;
@@ -1774,7 +1773,7 @@ body {
 }
 
 .blog-slider:hover .slick-prev:before {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.5);
     transition: all linear 0.1s;
 }
 

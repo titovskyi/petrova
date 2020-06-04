@@ -253,10 +253,8 @@ $(document).ready(function () {
 
             if (card.height() > 69) {
                 card.addClass('truncated');
-                // card.children().eq(1).show();
             } else {
                 card.removeClass('truncated');
-                // card.children().eq(1).hide();
             }
         });
     })();
