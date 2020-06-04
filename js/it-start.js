@@ -16,7 +16,8 @@ $(document).ready(function () {
         $('.popup__wrapper_vacancy').mCustomScrollbar({
             theme: 'minimal',
             mouseWheelPixels: 100,
-            scrollInertia: 0
+            scrollInertia: 0,
+            autoDraggerLength: false
         });
     }
 

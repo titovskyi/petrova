@@ -251,7 +251,7 @@ $(document).ready(function () {
         allCards.each(function (index, cardText) {
             let card = $(cardText);
 
-            if (card.height() > 68) {
+            if (card.height() > 69) {
                 card.addClass('truncated');
                 // card.children().eq(1).show();
             } else {
@@ -292,7 +292,8 @@ $(document).ready(function () {
         $('.popup__wrapper_vacancy').mCustomScrollbar({
             theme: 'minimal',
             mouseWheelPixels: 100,
-            scrollInertia: 0
+            scrollInertia: 0,
+            autoDraggerLength: false
         });
     }
 
@@ -300,7 +301,8 @@ $(document).ready(function () {
         $('.popup__wrapper_detailed-vacancy').mCustomScrollbar({
             theme: 'minimal',
             mouseWheelPixels: 100,
-            scrollInertia: 0
+            scrollInertia: 0,
+            autoDraggerLength: false
         });
     }
 

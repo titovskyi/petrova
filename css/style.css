@@ -1840,7 +1840,7 @@ body {
 }
 
 .blog-card__info {
-    margin: 5px 32px 32px 32px;
+    margin: 27px 0 32px 0;
 }
 
 .blog-card__info_header {
@@ -1881,7 +1881,7 @@ body {
 .more {
     position: absolute;
     bottom: 0;
-    left: 150px;
+    right: 0px;
     width: 300px;
     background-color: #0d0d0d;
 }
@@ -3516,7 +3516,7 @@ input:-webkit-autofill:active {
 
     .mobile-map {
         display: block;
-        margin: 57px auto 0 auto;
+        margin: 25px auto 0 auto;
     }
 
     /*contacts 576*/
@@ -3587,6 +3587,7 @@ input:-webkit-autofill:active {
     .address-card {
         right: 10%;
         top: 85px;
+        width: 150px;
     }
 }
 
