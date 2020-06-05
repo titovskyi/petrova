@@ -388,7 +388,7 @@ $(document).ready(function () {
         const nameReg = /^[a-zA-Z\u0400-\u04FF\s]*$/;
         const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         const phoneReg = /^\+?3?8?(0\d{9})$/;
-        const messageReg = /^.{1,2800}$/;
+        const messageReg = /^.{0,2800}$/gmu;
         const notEmpty = /.{1,}/;
 
         const regexpArray = [nameReg, emailReg, phoneReg, messageReg, notEmpty];

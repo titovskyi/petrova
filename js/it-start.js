@@ -159,7 +159,7 @@ $(document).ready(function () {
         const nameReg = /^[a-zA-Z\u0400-\u04FF\s]*$/;
         const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         const phoneReg = /^\+?3?8?(0\d{9})$/;
-        const messageReg = /^.{1,2800}$/;
+        const messageReg = /^.{1,2800}$/gmu;
         const notEmpty = /^.{1,}/;
 
         const regexpArray = [nameReg, emailReg, phoneReg, messageReg, notEmpty];
@@ -191,8 +191,6 @@ $(document).ready(function () {
         if (validForm === false) {
             for (let i = 0; inputArray.length > i; i++) {
                 if (i != CVindex) {
-                    console.log(regexpArray[i]);
-                    console.log(inputArray[i]);
                     if (regexpArray[i].test(inputArray[i].val())) {
                         validForm = true;
                     } else {
